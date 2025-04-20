@@ -3,7 +3,7 @@
  */
 "use strict";
 
-import { statusCheck, BASE_URL } from "../../scripts/common";
+import { statusCheck, BASE_URL } from "../../scripts/common.js";
 
 (function() {
   const ENTRY_STEP = 4;

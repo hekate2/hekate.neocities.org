@@ -1,5 +1,5 @@
 "use strict";
-import { BASE_URL, statusCheck } from "../../scripts/common";
+import { BASE_URL, statusCheck } from "../../scripts/common.js";
 
 (function() {
   window.addEventListener("load", init);

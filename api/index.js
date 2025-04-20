@@ -257,7 +257,7 @@ async function statusCheck(res) {
 }
 
 async function getDBConnection() {
-  const dbpath = path.join(process.cwd(), "data/data.db");
+  const dbpath = path.join(process.cwd(), "api/data/data.db");
   const db = await open({
     filename: dbpath,
     driver: sqlite3.Database
