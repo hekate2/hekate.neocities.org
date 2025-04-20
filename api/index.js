@@ -16,7 +16,6 @@ const sqlite3 = require('sqlite3');
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-
 dotenv.config();
 
 const app = express();
@@ -39,7 +38,7 @@ app.get("/test", (req, res) => res.type('text').send("Is this thing even on???")
 
 app.get("/qotd", async (req, res) => {
   try {
-    let jsonfileloc = path.join(process.cwd(), "api/data/questions.json");
+    let jsonfileloc = path.join(process.cwd(), "data/questions.json");
     let qotdInfo = await fs.readFile(jsonfileloc, "utf8");
     qotdInfo = JSON.parse(qotdInfo);
 
@@ -176,7 +175,7 @@ app.post('/stats', async (req, res) => {
     await statusCheck(visitCount);
     visitCount = await visitCount.json();
     
-    let jsonfileloc = path.join(process.cwd(), "api/data/locations.json");
+    let jsonfileloc = path.join(process.cwd(), "data/locations.json");
     let locations = await fs.readFile(jsonfileloc, "utf-8");
     locations = JSON.parse(locations);
 
@@ -188,7 +187,7 @@ app.post('/stats', async (req, res) => {
       await statusCheck(response);
     }
     
-    if (response && response?.status !== "fail") {
+    if (response?.lon && response?.lat && response?.status !== "fail") {
       //  if could get user's ip- get their location
       response = await response.json();
       locations.push({ latitude: response.lat, longitude: response.lon, timestamp: new Date().toISOString() });
@@ -258,7 +257,7 @@ async function statusCheck(res) {
 }
 
 async function getDBConnection() {
-  const dbpath = path.join(process.cwd(), "api/data/data.db");
+  const dbpath = path.join(process.cwd(), "data/data.db");
   const db = await open({
     filename: dbpath,
     driver: sqlite3.Database
