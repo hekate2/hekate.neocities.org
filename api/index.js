@@ -1,15 +1,16 @@
 "use strict";
 
-import express from 'express';
-import fetch from 'node-fetch';
-import { promises as fs } from 'fs';
-import { parseFromString } from 'dom-parser';
-import NodeMailer from 'nodemailer';
-import dotenv from 'dotenv';
-import multer from 'multer';
+const express = require('express');
+const fetch = require('node-fetch');
+const fs = require('fs').promises;
+const parseFromString = require('dom-parser').parseFromString;
+const NodeMailer = require('nodemailer');
+const dotenv = require('dotenv');
+const multer = require('multer');
+const path = require('path');
 
-import { open } from 'sqlite'
-import sqlite3 from 'sqlite3';
+const open = require('sqlite').open;
+const sqlite3 = require('sqlite3');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -31,9 +32,12 @@ const TRANSPORTER = NodeMailer.createTransport({
   }
 });
 
+app.get("/test", (req, res) => res.type('text').send("Is this thing even on???"));
+
 app.get("/qotd", async (req, res) => {
   try {
-    let qotdInfo = await fs.readFile("data/questions.json", "utf8");
+    let jsonfileloc = path.join(process.cwd(), "api/data/questions.json");
+    let qotdInfo = await fs.readFile(jsonfileloc, "utf8");
     qotdInfo = JSON.parse(qotdInfo);
 
     res.json(qotdInfo[0]);
@@ -82,17 +86,6 @@ app.get("/last-song", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.type('text').status(500).send(err);
-  }
-});
-
-app.get("/news", async (req, res) => {
-  try {
-    let news = await fs.readFile("data/recents.json", "utf8");
-    news = JSON.parse(news);
-    
-    res.json(news);
-  } catch (err) {
     res.type('text').status(500).send(err);
   }
 });
@@ -172,7 +165,8 @@ app.post('/stats', async (req, res) => {
     await statusCheck(visitCount);
     visitCount = await visitCount.json();
     
-    let locations = await fs.readFile("data/locations.json", "utf-8");
+    let jsonfileloc = path.join(process.cwd(), "api/data/locations.json");
+    let locations = await fs.readFile(jsonfileloc, "utf-8");
     locations = JSON.parse(locations);
 
     let ip = req.headers['x-forwarded-for'];
@@ -192,7 +186,7 @@ app.post('/stats', async (req, res) => {
         locations.shift(); // Remove the oldest entry
       }
     
-      await fs.writeFile("data/locations.json", JSON.stringify(locations));
+      await fs.writeFile(jsonfileloc, JSON.stringify(locations));
     }
     
     res.json({
@@ -247,14 +241,17 @@ async function statusCheck(res) {
 }
 
 async function getDBConnection() {
+  const dbpath = path.join(process.cwd(), "api/data/data.db");
   const db = await open({
-    filename: 'data/data.db',
+    filename: dbpath,
     driver: sqlite3.Database
   });
 
   return db;
 }
 
-app.use(express.static('client'));
+app.use(express.static('public'));
 const PORT = process.env.PORT || 8080;
 app.listen(PORT);
+
+module.exports = app;

@@ -1,4 +1,6 @@
 "use strict";
+import { statusCheck } from "../../scripts/common.js";
+
 (function() {
   window.addEventListener("load", init);
 
@@ -48,13 +50,5 @@
     successMessage.textContent = "THANK U FOR FILLING OUT MY FRIEND FORM!  I'm excited to chat with u :-)";
 
     formElem.appendChild(successMessage);
-  }
-
-  async function statusCheck(res) {
-    if (!res.ok) {
-      throw new Error(await res.text());
-    }
-
-    return res;
   }
 })();

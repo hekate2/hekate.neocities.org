@@ -30,6 +30,14 @@ export function wiggle(text) {
   }, 300);
 }
 
+export async function statusCheck(res) {
+  if (!res.ok) {
+    throw new Error(await res.text());
+  }
+
+  return res;
+}
+
 (function() {
 
   window.addEventListener("load", init);

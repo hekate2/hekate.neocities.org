@@ -303,8 +303,7 @@ import { wiggle } from "./common.js";
   // retrieves recent posts for homepage
   async function getRecentPosts() {
     try {
-      let res = await fetch("/news");
-      await statusCheck(res);
+      let res = await fetch("data/news.json");
       res = await res.json();
 
       processNewsTimeline(res);
