@@ -1,0 +1,90 @@
+#leftside {
+  flex: 1;
+  padding: 50px 20px 0 20px;
+}
+
+#rightside {
+  min-width: 200px;
+  max-width: 350px;
+}
+
+main {
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#hekate-photo-holder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#hekate-photo-holder > img {
+  position: absolute;
+  top: 12px;
+  left: -34px;
+  width: 85%;
+}
+
+#hekate-photo-holder figure {
+  margin: 0;
+}
+
+#hekate-photo-holder figure img {
+  width: 100%;
+  margin-top: 79px;
+}
+
+#likes-dislike {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+}
+
+#likes-dislike p {
+  margin: 0;
+}
+
+.like {
+  color: var(--text-accent);
+  font-weight: bold;
+}
+
+figcaption {
+  color: var(--text-accent);
+  font-style: italic;
+}
+
+figcaption span {
+  color: var(--text-primary);
+}
+
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2em;
+  font-style: italic;
+}
+
+#caravaggio {
+  position: relative;
+}
+
+#cat-1, #cat-2 {
+  width: 300px;
+  position: absolute;
+  transform: rotate(-10deg);
+  top: 20px;
+}
+
+#cat-2 {
+  transform: rotate(10deg);
+  left: 200px;
+  top: 70px;
+}
+
+#home {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: var(--bg-primary);
+}

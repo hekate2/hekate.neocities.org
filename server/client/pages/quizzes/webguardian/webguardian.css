@@ -1,0 +1,95 @@
+body {
+  background-color: rgb(34 94 179);
+  color: white;
+  background-size: 100vw 100vh;
+  background-position: 0 0;
+  background-attachment: fixed;
+  font-family: 'Verdana', 'Arial', sans-serif;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: 'GoodDog Cool';
+  font-size: 3em;
+}
+
+#quiz {
+  max-width: 600px;
+  width: 100vw;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+#quiz > section {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  cursor: pointer;
+}
+
+input[type='radio'] {
+  margin: 0;
+  margin-right: 5px;
+}
+
+label {
+  display: flex;
+  margin: 2px 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.pet {
+  position: absolute;
+}
+
+#cat-1 {
+  margin-left: -67px;
+  height: 75px;
+}
+
+#bird-1 {
+  height: 100px;
+  margin-top: -89px;
+  margin-left: 203px;
+}
+
+#cat-2 {
+  height: 75px;
+  margin-left: -88px;
+  z-index: 5;
+}
+
+#bug-1 {
+  height: 35px;
+  margin-left: 235px;
+  transform: rotate(-45deg);
+  margin-top: -16px;
+}
+
+#dog-1 {
+  height: 65px;
+  margin-left: 264px;
+  margin-top: -63px;
+}
+
+#frog-1 {
+  margin-left: -64px;
+  margin-top: 53px;
+  z-index: 4;
+  height: 20px;
+}
+
+#answer {
+  text-align: center;
+  display: none;
+  justify-content: center;
+  word-wrap: pre;
+}

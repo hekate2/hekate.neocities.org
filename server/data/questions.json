@@ -1,0 +1,15 @@
+[
+  {
+    "isActive": true,
+    "question": "Cat or Dog?",
+    "options": [
+      "Cat", "Dog"
+    ],
+    "responses": [
+      "Cat",
+      "Cat",
+      "Dog",
+      "Dog"
+    ]
+  }
+]

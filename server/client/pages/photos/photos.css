@@ -1,0 +1,135 @@
+body {
+  background-color: rgb(28, 28, 76);
+}
+
+.gallery-img {
+  height: 30vh;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-img img {
+  box-shadow: 7px 7px 0 #00000050;
+  border: 1px solid var(--bg-primary);
+}
+
+#photo-container > div > div {
+  position: relative;
+}
+
+#photo-container > div > div p {
+  background-color: var(--bg-primary);
+}
+
+#photo-container > div > div:nth-of-type(1) {
+  z-index: 3;
+}
+#photo-container > div > div:nth-of-type(2) {
+  z-index: 2;
+}
+
+#photo-container > div > div:nth-of-type(3) {
+  z-index: 1;
+}
+
+.gallery-img img {
+  height: 25vh;
+}
+
+/* #home-link, #scroll-hint {
+  position: absolute;
+}
+
+#home-link {
+  left: 10px;
+  bottom: 10px;
+  z-index: 100;
+}
+
+#scroll-hint {
+  right: 10px;
+  bottom: 10px;
+  z-index: 100;
+} */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  bottom: 0;
+  position: absolute;
+  z-index: 100;
+  background-color: var(--bg-primary);
+  width: 100vw;
+  left: 0;
+}
+
+#photo-container {
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.bigview {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--text-accent);
+  width: 300px;
+  top: 40px;
+  left: 40px;
+  position: absolute !important;
+  overflow: hidden;
+}
+
+.bigview > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bigview header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+  border-bottom: 1px solid var(--text-accent);
+}
+
+.bigview header p {
+  font-weight: bold;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
+}
+
+.bigview button {
+  background-color: var(--bg-primary);
+  color: var(--text-accent);
+  border: 1px solid var(--text-accent);
+}
+
+.bigview img {
+  width: 92%;
+  border: 1px solid var(--text-accent);
+  margin-top: 10px;
+}
+
+.bigview .button-container {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2em;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}

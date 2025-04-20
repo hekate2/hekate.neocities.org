@@ -1,0 +1,162 @@
+a {
+  color: var(--text-link);
+}
+
+body, .entry {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+header {
+  text-align: center;
+}
+
+main {
+  margin: 0 auto;
+}
+
+main > p {
+  text-align: center;
+}
+
+.entry {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.entry > time {
+  padding: 10px;
+  background-color: var(--text-accent);
+  color: yellow;
+}
+
+.entry > div {
+  padding: 10px;
+}
+
+.entry a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.entry a:hover {
+  color: lime;
+}
+
+.feeling, .song {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.song a {
+  margin-left: 5px;
+}
+
+.feeling::before, .song::before {
+  content: "[ ";
+  margin-right: 10px;
+}
+
+.feeling::after, .song::after {
+  content: " ]";
+  margin-left: 10px;
+}
+
+.new::after {
+  content: url(../../images/newspin.gif);
+  margin-left: 5px;
+  position: absolute;
+  margin-top: -4px;
+}
+
+a.title {
+  font-weight: bold;
+  font-size: 1.3em;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.title:hover {
+  color: inherit;
+}
+
+button.hidden {
+  visibility: hidden;
+  display: block;
+}
+
+#button-holder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 55px;
+}
+
+#button-holder button {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+#button-holder button:hover {
+  color: red;
+}
+
+#entries {
+  position: relative;
+  /* height: calc(100vh - 100px); */
+}
+
+#next-entry {
+  z-index: 1;
+  transform: translate(20px, 5px);
+}
+
+#back-entry {
+  z-index: 2;
+  transform: translate(-20px, 5px);
+}
+
+#next-entry, #back-entry {
+  transition: 1s all;
+  cursor: pointer;
+}
+
+#next-entry:hover {
+  transform: translate(40px, 5px);
+}
+
+#back-entry:hover {
+  transform: translate(-40px, 5px);
+}
+
+@media (min-width: 576px) { }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+  main {
+    width: 75vw;
+  }
+
+  .entry {
+    border: 1px solid;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  main {
+    width: 50vw;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { }
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { }
