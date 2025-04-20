@@ -267,7 +267,7 @@ async function getDBConnection() {
   return db;
 }
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 const PORT = process.env.PORT || 8080;
 app.listen(PORT);
 
