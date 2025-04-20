@@ -45,7 +45,10 @@ app.get("/qotd", async (req, res) => {
 
     res.json(qotdInfo[0]);
   } catch (err) {
-    res.type('text').status(500).send(err);
+    res.type('json').status(500).send({
+      "message": "an error occurred on the server",
+      "err": err
+    });
   }
 });
 
@@ -88,8 +91,10 @@ app.get("/last-song", async (req, res) => {
       "ytid": ytId
     });
   } catch (err) {
-    console.log(err);
-    res.type('text').status(500).send(err);
+    res.type('json').status(500).send({
+      "message": "an error occurred on the server",
+      "err": err
+    });
   }
 });
 
@@ -156,7 +161,10 @@ app.post("/wgg/submit", upload.single('gif'), async (req, res) => {
       res.type('text').send("success!");
     } catch (err) {
       console.log(err);
-      res.type('text').status(500).send(err);
+      res.type('json').status(500).send({
+        "message": "an error occurred on the server",
+        "err": err
+      });
     }
   }
   
@@ -198,8 +206,11 @@ app.post('/stats', async (req, res) => {
       visits: locations.slice(0, 100)
     }); // maybe instead of sending coords we could somehow make the map on the server 
   } catch (error) {
-      console.error('Error fetching location:', error);
-    res.type('text').status(500).send("An error occurred on the server.");
+    console.error('Error fetching location:', error);
+    res.type('json').status(500).send({
+      "message": "an error occurred on the server",
+      "err": error
+    });
   }
 });
 
@@ -231,7 +242,10 @@ more suff: ${extra}`
       res.type('text').send("Success!");
     } catch (err) {
       console.log(err);
-      res.type('text').status(500).send("Yuck- server error.  Plz email me @ howsoonisnow1121@gmail.com");
+      res.type('json').status(500).send({
+        "message": "an error occurred on the server",
+        "err": err
+      });
     }
   }
 });
