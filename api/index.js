@@ -38,7 +38,7 @@ app.get("/test", (req, res) => res.type('text').send("Is this thing even on???")
 
 app.get("/qotd", async (req, res) => {
   try {
-    let jsonfileloc = path.join(process.cwd(), "data/questions.json");
+    let jsonfileloc = path.join(process.cwd(), "api/data/questions.json");
     let qotdInfo = await fs.readFile(jsonfileloc, "utf8");
     qotdInfo = JSON.parse(qotdInfo);
 
@@ -175,7 +175,7 @@ app.post('/stats', async (req, res) => {
     await statusCheck(visitCount);
     visitCount = await visitCount.json();
     
-    let jsonfileloc = path.join(process.cwd(), "data/locations.json");
+    let jsonfileloc = path.join(process.cwd(), "api/data/locations.json");
     let locations = await fs.readFile(jsonfileloc, "utf-8");
     locations = JSON.parse(locations);
 
