@@ -1,4 +1,6 @@
 "use strict";
+import { BASE_URL, statusCheck } from "../../scripts/common";
+
 (function() {
   window.addEventListener("load", init);
 
@@ -96,7 +98,7 @@
     try {
       let form = document.querySelector("form");
       let params = new FormData(form);
-      let res = await fetch("/wgg/submit", {
+      let res = await fetch(`${BASE_URL}/wgg/submit`, {
         method: "POST",
         body: params
       });
@@ -114,14 +116,6 @@
     } catch (err) {
       res.type('text').status(500).send(err);
     }
-  }
-
-  /** Every time I re-type this I facepalm */
-  async function statusCheck(res) {
-    if (!res.ok) {
-      throw new Error(await res.text());
-    }
-    return res;
   }
 
 })();

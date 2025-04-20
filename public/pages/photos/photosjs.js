@@ -1,4 +1,5 @@
 "use strict";
+
 (function() {
   window.addEventListener("load", init);
 
@@ -9,7 +10,7 @@
 
   async function makeImages() {
     try {
-      let res = await fetch("photos.json");
+      let res = await fetch(`photos.json`);
       res = await res.json();
 
       let divContainer = document.createElement("div");

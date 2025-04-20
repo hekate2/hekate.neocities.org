@@ -1,5 +1,5 @@
 "use strict";
-import { wiggle } from "./common.js";
+import { BASE_URL, statusCheck, wiggle } from "./common.js";
 
 (function() {
   let ytPlayer;
@@ -35,7 +35,7 @@ import { wiggle } from "./common.js";
 
   async function getVisitorMap() {
     try {
-      let res = await fetch("/stats", {
+      let res = await fetch(`${BASE_URL}/stats`, {
         method: "POST"
       });
       await statusCheck(res);
@@ -261,7 +261,7 @@ import { wiggle } from "./common.js";
         }, 1000);
       });
 
-      let res = await fetch("/qotd");
+      let res = await fetch(`${BASE_URL}/qotd`);
       await statusCheck(res);
       res = await res.json();
 
@@ -366,7 +366,7 @@ import { wiggle } from "./common.js";
   async function getLastListenedTo() {
     try {
       // TODO: make request to lastfm on server side 
-      let res = await fetch(`/last-song`);
+      let res = await fetch(`${BASE_URL}/last-song`);
       await statusCheck(res);
       res = await res.json();
       
@@ -570,13 +570,6 @@ import { wiggle } from "./common.js";
     tag.src = "https://www.youtube.com/iframe_api";
     let firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  }
-
-  async function statusCheck(res) {
-    if (!res.ok) {
-      throw new Error(await res.text());
-    }
-    return res;
   }
 
   /**

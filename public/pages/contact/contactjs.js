@@ -1,5 +1,5 @@
 "use strict";
-import { statusCheck } from "../../scripts/common.js";
+import { statusCheck, BASE_URL } from "../../scripts/common.js";
 
 (function() {
   window.addEventListener("load", init);
@@ -27,7 +27,7 @@ import { statusCheck } from "../../scripts/common.js";
   async function formFunctionality(form) {
     try {
       let params = new FormData(form);
-      let res = await fetch(`/friends`, {
+      let res = await fetch(`${BASE_URL}/friends`, {
         method: "POST",
         body: params
       });

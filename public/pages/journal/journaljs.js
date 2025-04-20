@@ -2,6 +2,9 @@
  * This isn't the best code- but it gets the job done :-)
  */
 "use strict";
+
+import { statusCheck, BASE_URL } from "../../scripts/common";
+
 (function() {
   const ENTRY_STEP = 4;
 
@@ -65,7 +68,7 @@
   // toggles visibility of the control buttons and shows the desired entry
   async function showCurrEntry(preview=true) {
     try {
-      let entries = await fetch(`/entries?topentry=${currEntryIndex}&offset=${preview ? ENTRY_STEP - 1: 1}`);
+      let entries = await fetch(`${BASE_URL}/entries?topentry=${currEntryIndex}&offset=${preview ? ENTRY_STEP - 1: 1}`);
       await statusCheck(entries);
       entries = await entries.json();
 
@@ -211,14 +214,6 @@
     entry.append(blogTime, blogHolder);
     // it's still an array because I was doing stuff before and idk maybe I'll want to go back to that
     return [entry];
-  }
-
-  /** FETCH UTILS */
-  async function statusCheck(res) {
-    if (!res.ok) {
-      throw new Error(await res.text());
-    }
-    return res;
   }
 
   /** Helpers- simplify longer js functions */

@@ -8,6 +8,7 @@ const NodeMailer = require('nodemailer');
 const dotenv = require('dotenv');
 const multer = require('multer');
 const path = require('path');
+const cors = require('cors');
 
 const open = require('sqlite').open;
 const sqlite3 = require('sqlite3');
@@ -15,11 +16,13 @@ const sqlite3 = require('sqlite3');
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
+
 dotenv.config();
 
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+app.use(cors()); // cors
+app.use(express.urlencoded({ extended: true })); // multipart-formdata params
 
 const LASTFM_BASE = "http://ws.audioscrobbler.com/2.0/"; // why the heck is their domain audioscrobbler?
 const HITCOUNT_URL = "https://weirdscifi.ratiosemper.com/neocities.php?sitename=hekate";

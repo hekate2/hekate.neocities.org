@@ -2,6 +2,8 @@
 const WIGGLE_OFFSET = 1.5;
 const WIGGLE_NUM_LET = 3;
 
+export const BASE_URL = "https://hekateapi.vercel.app";
+
 // wiggles text
 export function wiggle(text) {
   let words = text.textContent;
