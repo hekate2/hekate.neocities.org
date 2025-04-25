@@ -4,6 +4,7 @@ main > img {
   border: 10px solid transparent;
   border-image: url(../../images/weirdgifgallery/wood-frame.png) 30 round;
   cursor: pointer;
+  max-height: 175px;
 }
 
 main > img:hover {

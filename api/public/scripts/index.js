@@ -485,7 +485,13 @@ import { BASE_URL, statusCheck, wiggle } from "./common.js";
 
     newsTitle.textContent = meta.title;
     newsDesc.textContent = meta.description;
-    newsTitle.href = meta.link;
+    newsTitle.href = meta.link || "#";
+
+    if (!meta.link) {
+      newsTitle.addEventListener("click", (e) => {
+        e.preventDefault();
+      });
+    }
 
     typeTag.classList.add("news-tag");
     typeTag.textContent = meta.type;

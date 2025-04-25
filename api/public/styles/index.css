@@ -3,6 +3,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url("../images/compo-white-border.jpg");
+  background-repeat: repeat-y;
 }
 
 body > iframe {
@@ -366,9 +368,8 @@ main > header {
 }
 
 .news-img {
-  max-height: 200px;
+  max-height: 125px;
   max-width: 300px;
-  border: 1px solid var(--text-accent);
   margin: 0 10px 10px 0;
 }
 

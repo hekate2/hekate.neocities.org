@@ -16,11 +16,18 @@ h1 {
   font-size: 3em;
 }
 
+#guardian-btn {
+  align-self: center;
+  margin: 1em;
+  cursor: pointer;
+}
+
 #quiz {
   max-width: 600px;
   width: 100vw;
   margin: 0 auto;
-  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 #quiz > section {
@@ -92,4 +99,8 @@ h1 {
   display: none;
   justify-content: center;
   word-wrap: pre;
+}
+
+#guardian-button {
+  margin: 5px;
 }

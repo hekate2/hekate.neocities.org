@@ -168,7 +168,7 @@ import { statusCheck, BASE_URL } from "../../scripts/common.js";
       blogFeeling.classList.add("feeling");
       feelingColon.textContent = `feeling: ${blogContents.feeling}`;
 
-      feelingImage.src = "../../../images/faces/" + blogContents.feelingsticker;
+      feelingImage.src = "../../images/faces/" + blogContents.feelingsticker;
       feelingImage.alt = `A ${blogContents.feeling} face`;
 
       blogFeeling.append(feelingColon, feelingImage);

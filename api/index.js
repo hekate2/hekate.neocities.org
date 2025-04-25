@@ -38,7 +38,7 @@ app.get("/test", (req, res) => res.type('text').send("Is this thing even on???")
 
 app.get("/qotd", async (req, res) => {
   try {
-    let jsonfileloc = path.join(process.cwd(), "api/data/questions.json");
+    const jsonfileloc = process.env.DEV === "true" ? "data/questions.json" : path.join(process.cwd(), "api/data/questions.json");
     let qotdInfo = await fs.readFile(jsonfileloc, "utf8");
     qotdInfo = JSON.parse(qotdInfo);
 
@@ -175,7 +175,7 @@ app.post('/stats', async (req, res) => {
     await statusCheck(visitCount);
     visitCount = await visitCount.json();
     
-    let jsonfileloc = path.join(process.cwd(), "api/data/locations.json");
+    const jsonfileloc = process.env.DEV === "true" ? "data/locations.json" : path.join(process.cwd(), "api/data/locations.json");
     let locations = await fs.readFile(jsonfileloc, "utf-8");
     locations = JSON.parse(locations);
 
@@ -257,7 +257,7 @@ async function statusCheck(res) {
 }
 
 async function getDBConnection() {
-  const dbpath = path.join(process.cwd(), "api/data/data.db");
+  const dbpath = process.env.DEV === "true" ? "data/data.db" : path.join(process.cwd(), "api/data/data.db");
   const db = await open({
     filename: dbpath,
     driver: sqlite3.Database
@@ -266,7 +266,10 @@ async function getDBConnection() {
   return db;
 }
 
-// app.use(express.static('public'));
+if (process.env.DEV === "true") {
+  app.use(express.static('public'));
+}
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT);
 

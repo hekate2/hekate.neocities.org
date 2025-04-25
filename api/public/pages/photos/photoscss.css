@@ -38,28 +38,12 @@ body {
   height: 25vh;
 }
 
-/* #home-link, #scroll-hint {
-  position: absolute;
-}
-
-#home-link {
-  left: 10px;
-  bottom: 10px;
-  z-index: 100;
-}
-
-#scroll-hint {
-  right: 10px;
-  bottom: 10px;
-  z-index: 100;
-} */
-
 footer {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   bottom: 0;
-  position: absolute;
+  position: fixed;
   z-index: 100;
   background-color: var(--bg-primary);
   width: 100vw;

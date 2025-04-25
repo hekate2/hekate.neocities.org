@@ -2,13 +2,26 @@ a {
   color: var(--text-link);
 }
 
+a, p {
+  background-color: var(--bg-primary);
+}
+
 body, .entry {
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
 
+/* body {
+  background-image: url(../../images/compo-blue.jpg);
+} */
+
 header {
   text-align: center;
+}
+
+header > p,
+main > p {
+  display: inline-block;
 }
 
 main {
@@ -101,6 +114,13 @@ button.hidden {
   text-decoration: underline;
   color: blue;
   cursor: pointer;
+}
+
+#back-button {
+  margin-right: 5px;
+}
+#next-button {
+  margin-left: 5px;
 }
 
 #button-holder button:hover {

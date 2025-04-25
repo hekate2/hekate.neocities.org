@@ -20,8 +20,7 @@
       // console.log(answer);
       display(answer);
     } catch (err) {
-      console.error(err);
-      alert("Something went wrong while getting your results :-/");
+      alert(err || "Something went wrong :-/");
     }
   }
 
@@ -38,6 +37,10 @@
   function getMostCommonAnswer() {
     let chosenAnswers = document.querySelectorAll("#quiz input[type='radio']:checked");
     let tally = {};
+
+    if (chosenAnswers.length !== document.querySelectorAll("#quiz > section").length) {
+      throw new Error("Plz choose something for every answer!");
+    }
 
     chosenAnswers.forEach((ans) => {
       if (!tally[ans.value]) {
