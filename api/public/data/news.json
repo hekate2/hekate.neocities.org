@@ -1,20 +1,9 @@
 [
   {
-    "type": "New Page",
-    "date": "04/20/2025",
-    "title": "ULTIMATE SKATEBOARD",
-    "description": "I'm currently working on a videogame set in Vancouver, WA, USA- you should totally check it out ;-)",
-    "link": "https://www.vidlii.com/watch?v=o_BtKfzBJKT",
-    "image": {
-      "src": "images/bigmike-capture.png",
-      "alt": "Big mike from ultimate skateboard"
-    }
-  },
-  {
     "type": "Update",
     "date": "03/31/2025",
     "title": "(Site Updates)... EVERYTHING",
-    "description": "Revamped site!  Now includes music pages, updated about me, photos, a new guestbook/journal format... well basically the whole thing's new.  So you really should check it out.",
+    "description": "Revamped site!  Now includes music pages, updated 'about me', photos, things to put on your website... well basically the whole thing's new.  So you really should check it out.  BUT there is also more to come so do stay tuned!!",
     "link": null
   }
 ]

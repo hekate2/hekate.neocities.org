@@ -435,6 +435,25 @@ import { BASE_URL, statusCheck, wiggle } from "./common.js";
     }
 
     hasPressedPlay = true;
+    linksOpenNewPage();
+  }
+
+  function linksOpenNewPage() {
+    let allLinks = qsa("a");
+
+    for (let i = 0; i < allLinks.length; i++) {
+      let currLink = allLinks[i];
+
+      if (playing) {
+        // add attribute to open in new page
+        currLink.target = "_blank";
+      } else {
+        // add attribute to open in same page
+        currLink.target = "_self";
+      }
+    }
+
+    
   }
 
   // This function gets called when the video player is ready
