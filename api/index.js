@@ -127,7 +127,7 @@ app.get("/entries", async (req, res) => {
     const totalEntries = await getCountFromServer(entryColl);
 
     if (entries.length === 0) {
-      res.type("text").send("No entries were found :-(");
+      res.type("text").status(404).send("No entries were found :-(");
     } else {
       res.json({
         totalEntries: totalEntries.data().count, // TODO: calculate
@@ -139,19 +139,6 @@ app.get("/entries", async (req, res) => {
     res.status(500).type('text').send("Error fetching data: " + err.message);
   }
 });
-  
-async function getEntries(start = 0, end = 0) {
-  if (start >= end) {
-    end = start + 1;
-  }
-
-  const entriesRef = collection(firestoreDb, "entries");
-  const q = query(entriesRef, orderBy("order"), startAt(start), limit(end - start));
-
-  const snapshot = await getDocs(q);
-
-  return [...snapshot.docs.map((doc) => doc.data())];
-}
 
   // let db;
   // try {
@@ -301,6 +288,20 @@ more suff: ${extra}`
     }
   }
 });
+
+/** retrieves entries from firestore database given a starting and end index */
+async function getEntries(start = 0, end = 0) {
+  if (start >= end) {
+    end = start + 1;
+  }
+
+  const entriesRef = collection(firestoreDb, "entries");
+  const q = query(entriesRef, orderBy("order"), startAt(start), limit(end - start));
+
+  const snapshot = await getDocs(q);
+
+  return [...snapshot.docs.map((doc) => doc.data())].reverse();
+}
 
 async function statusCheck(res) {
   if (!res.ok) {
