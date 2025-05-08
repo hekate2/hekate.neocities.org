@@ -2,7 +2,7 @@
 const WIGGLE_OFFSET = 1.5;
 const WIGGLE_NUM_LET = 3;
 
-export const BASE_URL = "";
+export const BASE_URL = "https://hekate-api.onrender.com";
 
 // wiggles text
 export function wiggle(text) {
