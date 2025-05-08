@@ -65,12 +65,22 @@ import { statusCheck, BASE_URL } from "../../scripts/common.js";
     }    
   }
 
+  function showLoading() {
+    document.getElementById("loader").classList.remove("hidden");
+  }
+
+  function hideLoading() {
+    document.getElementById("loader").classList.add("hidden");
+  }
+
   // toggles visibility of the control buttons and shows the desired entry
   async function showCurrEntry(preview=true) {
     try {
+      showLoading();
       let entries = await fetch(`${BASE_URL}/entries?topentry=${currEntryIndex}&offset=${preview ? ENTRY_STEP - 1: 1}`);
       await statusCheck(entries);
       entries = await entries.json();
+      hideLoading();
 
       if (preview) {
         showMultiEntries(entries);
@@ -156,7 +166,7 @@ import { statusCheck, BASE_URL } from "../../scripts/common.js";
     blogTitle.classList.add("title");
 
     blogSubti.textContent = blogContents.subtitle;
-    blogTime.textContent = blogContents.time;
+    blogTime.textContent = toDateTime(blogContents.time.seconds).toDateString();
 
     // within a week?  It's new
     if (Date.now() - new Date(blogContents.time).valueOf() < 1000 * 60 * 60 * 24 * 7) {
@@ -186,7 +196,7 @@ import { statusCheck, BASE_URL } from "../../scripts/common.js";
       blogSong.append(songColon, songAnchor);
     }
 
-    blogTime.dateTime = blogContents.time;
+    blogTime.dateTime = toDateTime(blogContents.time.seconds);
 
     blogHolder.append(blogTitle);
     blogSubti && blogHolder.appendChild(blogSubti);
@@ -228,4 +238,11 @@ import { statusCheck, BASE_URL } from "../../scripts/common.js";
   function qsa(query) {
     return document.querySelectorAll(query);
   }
+
+  // seconds to usable date.  F*** FIREBASE
+  function toDateTime(secs) {
+    var t = new Date(1970, 0, 1); // Epoch
+    t.setSeconds(secs);
+    return t;
+}
 })();

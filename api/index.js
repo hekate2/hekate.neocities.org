@@ -10,6 +10,11 @@ const multer = require('multer');
 const path = require('path');
 const cors = require('cors');
 
+const initializeApp = require('firebase/app').initializeApp;
+const getAnalytics = require("firebase/analytics").getAnalytics;
+const { getDatabase, ref, get, onValue } = require('firebase/database');
+const { getFirestore, collection, startAt, limit, query, orderBy, getDocs, getCountFromServer } = require('firebase/firestore');
+
 const open = require('sqlite').open;
 const sqlite3 = require('sqlite3');
 
@@ -23,6 +28,21 @@ const app = express();
 app.use(cors()); // cors
 app.use(express.urlencoded({ extended: true })); // multipart-formdata params
 
+const firebaseConfig = {
+  apiKey: process.env.FB_API_KEY,
+  authDomain: process.env.FB_AUTH_DOMAIN,
+  databaseURL: process.env.FB_DB_URL,
+  projectId: process.env.FB_PJID,
+  storageBucket: process.env.FB_SB,
+  messagingSenderId: process.env.FB_MSG_ID,
+  appId: process.env.FB_APP_ID,
+  measurementId: process.FB_MEASUREID
+};
+
+const fbApp = initializeApp(firebaseConfig);
+const firestoreDb = getFirestore(fbApp);
+
+
 const LASTFM_BASE = "http://ws.audioscrobbler.com/2.0/"; // why the heck is their domain audioscrobbler?
 const HITCOUNT_URL = "https://weirdscifi.ratiosemper.com/neocities.php?sitename=hekate";
 
@@ -35,21 +55,6 @@ const TRANSPORTER = NodeMailer.createTransport({
 });
 
 app.get("/test", (req, res) => res.type('text').send("Is this thing even on???"));
-
-app.get("/qotd", async (req, res) => {
-  try {
-    const jsonfileloc = process.env.DEV === "true" ? "data/questions.json" : path.join(process.cwd(), "api/data/questions.json");
-    let qotdInfo = await fs.readFile(jsonfileloc, "utf8");
-    qotdInfo = JSON.parse(qotdInfo);
-
-    res.json(qotdInfo[0]);
-  } catch (err) {
-    res.type('json').status(500).send({
-      "message": "an error occurred on the server",
-      "err": err
-    });
-  }
-});
 
 app.get("/last-song", async (req, res) => {
   try {
@@ -98,39 +103,77 @@ app.get("/last-song", async (req, res) => {
 });
 
 app.get("/entries", async (req, res) => {
-  let db;
   try {
-    db = await getDBConnection();
+    let startEntry = parseInt(req.query.topentry || "0", 10);
+    let numEntries = parseInt(req.query.offset || "10", 10);
 
-    if (!req.query.topentry) {
-      let entries = await db.all("SELECT * FROM entries ORDER BY time");
+    if (isNaN(startEntry) || isNaN(numEntries) || startEntry < 0 || numEntries < 0) {
+      return res.status(400).send("Invalid query parameters.");
+    }
 
-      res.json({
-        "totalEntries": entries.length,
-        "entry": entries
-      });
+    let entries = await getEntries(startEntry, numEntries);
+    const entryColl = collection(firestoreDb, "entries");
+    const totalEntries = await getCountFromServer(entryColl);
+
+    if (entries.length === 0) {
+      res.type("text").send("No entries were found :-(");
     } else {
-      let topentry = req.query.topentry;
-      let query = "SELECT * FROM entries ORDER BY time DESC LIMIT ? OFFSET ?";
-
-      let entries = await db.all(query, parseInt(req.query.offset) || 100, (parseInt(topentry) || 1) - 1);
-      let entryCount = await db.get("SELECT COUNT(*) as count FROM entries");
-  
       res.json({
-        "totalEntries": entryCount.count, // TODO: get total number of entries
-        "entry": entries
+        totalEntries: totalEntries.data().count, // TODO: calculate
+        entry: entries
       });
     }
   } catch (err) {
-    console.error(err);
-    res.status(500).json({
-      "status": "error",
-      "message": err.message
-    })
-  } finally {
-    await db?.close();
+    console.log(err);
+    res.status(500).type('text').send("Error fetching data: " + err.message);
   }
 });
+  
+async function getEntries(start = 0, end = 0) {
+  if (start >= end) {
+    end = start + 1;
+  }
+
+  const entriesRef = collection(firestoreDb, "entries");
+  const q = query(entriesRef, orderBy("order"), startAt(start), limit(end - start));
+
+  const snapshot = await getDocs(q);
+
+  return [...snapshot.docs.map((doc) => doc.data())];
+}
+
+  // let db;
+  // try {
+  //   db = await getDBConnection();
+
+  //   if (!req.query.topentry) {
+  //     let entries = await db.all("SELECT * FROM entries ORDER BY time");
+
+  //     res.json({
+  //       "totalEntries": entries.length,
+  //       "entry": entries
+  //     });
+  //   } else {
+  //     let topentry = req.query.topentry;
+  //     let query = "SELECT * FROM entries ORDER BY time DESC LIMIT ? OFFSET ?";
+
+  //     let entries = await db.all(query, parseInt(req.query.offset) || 100, (parseInt(topentry) || 1) - 1);
+  //     let entryCount = await db.get("SELECT COUNT(*) as count FROM entries");
+  
+  //     res.json({
+  //       "totalEntries": entryCount.count, // TODO: get total number of entries
+  //       "entry": entries
+  //     });
+  //   }
+  // } catch (err) {
+  //   console.error(err);
+  //   res.status(500).json({
+  //     "status": "error",
+  //     "message": err.message
+  //   })
+  // } finally {
+  //   await db?.close();
+  // }
 
 app.post("/wgg/submit", upload.single('gif'), async (req, res) => {
   if (!req.body) {
@@ -159,7 +202,6 @@ app.post("/wgg/submit", upload.single('gif'), async (req, res) => {
   
       res.type('text').send("success!");
     } catch (err) {
-      console.log(err);
       res.type('json').status(500).send({
         "message": "an error occurred on the server",
         "err": err
@@ -175,34 +217,34 @@ app.post('/stats', async (req, res) => {
     await statusCheck(visitCount);
     visitCount = await visitCount.json();
     
-    const jsonfileloc = process.env.DEV === "true" ? "data/locations.json" : path.join(process.cwd(), "api/data/locations.json");
-    let locations = await fs.readFile(jsonfileloc, "utf-8");
-    locations = JSON.parse(locations);
+    // const jsonfileloc = process.env.DEV === "true" ? "data/locations.json" : path.join(process.cwd(), "api/data/locations.json");
+    // let locations = await fs.readFile(jsonfileloc, "utf-8");
+    // locations = JSON.parse(locations);
 
-    let ip = req.headers['x-forwarded-for'];
-    let response;
+    // let ip = req.headers['x-forwarded-for'];
+    // let response;
 
-    if (ip) {
-      response = await fetch(`http://ip-api.com/json/${ip}`);
-      await statusCheck(response);
-    }
+    // if (ip) {
+    //   response = await fetch(`http://ip-api.com/json/${ip}`);
+    //   await statusCheck(response);
+    // }
     
-    if (response?.lon && response?.lat && response?.status !== "fail") {
-      //  if could get user's ip- get their location
-      response = await response.json();
-      locations.push({ latitude: response.lat, longitude: response.lon, timestamp: new Date().toISOString() });
+    // if (response?.lon && response?.lat && response?.status !== "fail") {
+    //   //  if could get user's ip- get their location
+    //   response = await response.json();
+    //   locations.push({ latitude: response.lat, longitude: response.lon, timestamp: new Date().toISOString() });
     
-      if (locations.length > 100) {
-        locations.shift(); // Remove the oldest entry
-      }
+    //   if (locations.length > 100) {
+    //     locations.shift(); // Remove the oldest entry
+    //   }
     
-      await fs.writeFile(jsonfileloc, JSON.stringify(locations));
-    }
+    //   await fs.writeFile(jsonfileloc, JSON.stringify(locations));
+    // }
     
     res.json({
       visitcount: visitCount["info"]["views"],
-      lastupdate: visitCount["info"]["last_updated"],
-      visits: locations.slice(0, 100)
+      lastupdate: visitCount["info"]["last_updated"]
+      // visits: locations.slice(0, 100)
     }); // maybe instead of sending coords we could somehow make the map on the server 
   } catch (error) {
     console.error('Error fetching location:', error);
@@ -257,7 +299,7 @@ async function statusCheck(res) {
 }
 
 async function getDBConnection() {
-  const dbpath = process.env.DEV === "true" ? "data/data.db" : path.join(process.cwd(), "api/data/data.db");
+  const dbpath = "data/data.db";
   const db = await open({
     filename: dbpath,
     driver: sqlite3.Database
@@ -266,10 +308,7 @@ async function getDBConnection() {
   return db;
 }
 
-if (process.env.DEV === "true") {
-  app.use(express.static('public'));
-}
-
+app.use(express.static('public'));
 const PORT = process.env.PORT || 8080;
 app.listen(PORT);
 
