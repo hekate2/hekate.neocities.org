@@ -2,7 +2,6 @@
 const WIGGLE_OFFSET = 1.5;
 const WIGGLE_NUM_LET = 3;
 
-// export const BASE_URL = "https://hekateapi.vercel.app";
 export const BASE_URL = "";
 
 // wiggles text

@@ -26,7 +26,18 @@ dotenv.config();
 const app = express();
 
 app.use(cors()); // cors
-app.use(express.urlencoded({ extended: true })); // multipart-formdata params
+
+const corsOptions = {
+  origin: ['http://localhost:8080', 'http://127.0.0.1:8080'], // Add your frontend URLs here
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true,
+  extended: true
+};
+
+app.use(cors(corsOptions));
+
+// app.use(express.urlencoded({ extended: true })); // multipart-formdata params
 
 const firebaseConfig = {
   apiKey: process.env.FB_API_KEY,
