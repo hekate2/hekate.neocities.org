@@ -77,7 +77,7 @@ import { statusCheck, BASE_URL } from "../../scripts/common.js";
   async function showCurrEntry(preview=true) {
     try {
       showLoading();
-      let entries = await fetch(`${BASE_URL}/entries?topentry=${currEntryIndex}&offset=${preview ? ENTRY_STEP - 1: 1}`);
+      let entries = await fetch(`${BASE_URL}/entries?topentry=${currEntryIndex}&offset=${preview ? ENTRY_STEP: 1}`);
       await statusCheck(entries);
       entries = await entries.json();
       hideLoading();
@@ -213,10 +213,10 @@ import { statusCheck, BASE_URL } from "../../scripts/common.js";
       blogHolder.appendChild(para);
     }
 
-    if (blogContents.contents.length > 300 && preview) {
+    if (blogContents.contents.length > 350 && preview) {
       let readMoreLink = document.createElement("a");
       readMoreLink.textContent = "Read more...";
-      readMoreLink.href = `index.html?entry=${index}`;
+      readMoreLink.href = `index.html?entry=${blogContents.order}`;
 
       blogHolder.appendChild(readMoreLink);
     }

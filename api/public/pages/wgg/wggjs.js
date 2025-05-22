@@ -12,7 +12,7 @@ import { BASE_URL, statusCheck } from "../../scripts/common.js";
   /** retrieves images from the json file */
   async function getImages() {
     try {
-      let res = await fetch("../../../data/wgg.json");
+      let res = await fetch("../../data/wgg.json");
       res = await res.json();
 
       populateGallery(res);
@@ -26,19 +26,34 @@ import { BASE_URL, statusCheck } from "../../scripts/common.js";
   /** Populates the gallery with images */
   function populateGallery(images) {
     images.forEach((img, i) => {
+      
+      let holder = document.createElement("div");
+      holder.classList.add("img-holder");
+      
       let imgElem = document.createElement("img");
       let frameIndex = Math.floor(Math.random() * 2) + 1;
 
-      imgElem.src = `../../../images/weirdgifgallery/${img.src}`;
+      imgElem.src = `../../images/weirdgifgallery/${img.src}`;
       imgElem.alt = img.alt;
       // imgElem.classList.add(`frame-${frameIndex}`);
+      
       imgElem.style.transform = `rotate(${Math.floor(Math.random() * 21) - 10}deg)`
 
       if (i == 7) {
         document.querySelector("main").appendChild(createSubmitDialog());
       }
-
-      document.querySelector("main").appendChild(imgElem);
+      
+      
+      holder.appendChild(imgElem);
+      
+      if (img["submitted_by"]) {
+        let submittedByText = document.createElement("p");
+        submittedByText.textContent = `Submitted by: ${img["submitted_by"]}`;
+        
+        holder.appendChild(submittedByText);
+      }
+      
+      document.querySelector("main").appendChild(holder);
     });
   }
 

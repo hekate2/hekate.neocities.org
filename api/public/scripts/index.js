@@ -11,6 +11,8 @@ import { BASE_URL, statusCheck, wiggle } from "./common.js";
 
   // Page load stuff
   function init() {
+    mobileFunctionality();
+
     ytPlayerSetup();
     getLastListenedTo();
     getRecentPosts();
@@ -31,6 +33,15 @@ import { BASE_URL, statusCheck, wiggle } from "./common.js";
     });
 
     qs("body").addEventListener("click", explodeOnClick);
+  }
+
+  /**
+   * Enables mobile-specific functions, such as the dropdown menu
+   */
+  function mobileFunctionality() {
+    id("menu-btn").addEventListener("click", () => {
+      qs("#navbar > ul").classList.toggle("shown");
+    });
   }
 
   async function getVisitorMap() {

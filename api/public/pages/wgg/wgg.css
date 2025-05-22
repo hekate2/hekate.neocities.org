@@ -1,13 +1,14 @@
-main > img {
+.img-holder img {
   margin: 10px;
   height: calc(33vh - 40px);
   border: 10px solid transparent;
   border-image: url(../../images/weirdgifgallery/wood-frame.png) 30 round;
   cursor: pointer;
+  max-width: 230px;
   max-height: 175px;
 }
 
-main > img:hover {
+.img-holder img:hover {
   transform: rotate(0deg) !important;
 }
 
@@ -33,9 +34,32 @@ main > div {
   width: 300px;
 }
 
+main > div.img-holder {
+  width: auto;
+}
+
+
+.img-holder {
+  position: relative;
+}
+
+.img-holder p {
+    display: inline;
+    margin: 0;
+    background-color: var(--bg-primary);
+    border: 1px solid;
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+}
+
 .success {
   width: 100%;
   text-align: center;
+}
+
+.img-holder {
+  border: none; 
 }
 
 #inputs button {
