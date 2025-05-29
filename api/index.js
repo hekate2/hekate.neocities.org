@@ -318,9 +318,15 @@ async function getEntries(start = 0, end = 0) {
   const snapshot = await getDocs(q);
 
   // Slice from start to end
-  const paginatedDocs = snapshot.docs.slice(start, end);
 
-  return paginatedDocs.map((doc) => doc.data());
+  if (end - start === 1) {
+    // single entry
+    return [snapshot.docs[snapshot.docs.length - start].data()]
+  } else {
+    const paginatedDocs = snapshot.docs.slice(start, end);
+    return paginatedDocs.map((doc) => doc.data());
+  }
+  
 }
 
 async function statusCheck(res) {
