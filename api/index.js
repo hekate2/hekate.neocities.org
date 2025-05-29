@@ -115,8 +115,8 @@ app.get("/last-song", async (req, res) => {
 
 app.get("/entries", async (req, res) => {
   try {
-    let startEntry = parseInt(req.query.topentry || "0", 10);
-    let numEntries = parseInt(req.query.offset || "10", 10);
+    let startEntry = parseInt(req.query.topentry || "0");
+    let numEntries = parseInt(req.query.offset || "10");
 
     if (isNaN(startEntry) || isNaN(numEntries) || startEntry < 0 || numEntries < 0) {
       return res.status(400).send("Invalid query parameters.");
@@ -289,18 +289,38 @@ more suff: ${extra}`
   }
 });
 
-/** retrieves entries from firestore database given a starting and end index */
+// /** retrieves entries from firestore database given a starting and end index */
+// async function getEntries(start = 0, end = 0) {
+//   if (start >= end) {
+//     end = start + 1;
+//   }
+
+//   const entriesRef = collection(firestoreDb, "entries");
+
+//   const q = query(entriesRef, orderBy("order", "desc"), startAt(start), limit(end - start));
+
+//   const snapshot = await getDocs(q);
+
+//   console.log(snapshot.docs);
+
+//   return [...snapshot.docs.map((doc) => doc.data())].reverse();
+// }
+
 async function getEntries(start = 0, end = 0) {
   if (start >= end) {
     end = start + 1;
   }
 
   const entriesRef = collection(firestoreDb, "entries");
-  const q = query(entriesRef, orderBy("order"), startAt(start), limit(end - start));
 
+  // Query all entries ordered by 'order' descending (newest first)
+  const q = query(entriesRef, orderBy("order", "desc"));
   const snapshot = await getDocs(q);
 
-  return [...snapshot.docs.map((doc) => doc.data())].reverse();
+  // Slice from start to end
+  const paginatedDocs = snapshot.docs.slice(start, end);
+
+  return paginatedDocs.map((doc) => doc.data());
 }
 
 async function statusCheck(res) {
