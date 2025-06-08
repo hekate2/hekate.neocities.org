@@ -1,18 +1,36 @@
-@font-face {
-    font-family: 'Gutter Vomit';
-    src: url('Gutter-Vomit.woff2') format('woff2'),
-        url('Gutter-Vomit.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'GoodDog Cool';
-    src: url('GoodDogCool.woff2') format('woff2'),
-        url('GoodDogCool.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
+@font-face {
+
+    font-family: 'Gutter Vomit';
+
+    src: url('Gutter-Vomit.woff2') format('woff2'),
+
+        url('Gutter-Vomit.woff') format('woff');
+
+    font-weight: normal;
+
+    font-style: normal;
+
+    font-display: swap;
+
+}
+
+
+
+@font-face {
+
+    font-family: 'GoodDog Cool';
+
+    src: url('GoodDogCool.woff2') format('woff2'),
+
+        url('GoodDogCool.woff') format('woff');
+
+    font-weight: normal;
+
+    font-style: normal;
+
+    font-display: swap;
+
+}
+
+
+

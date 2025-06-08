@@ -122,7 +122,7 @@ app.get("/entries", async (req, res) => {
       return res.status(400).send("Invalid query parameters.");
     }
 
-    let entries = await getEntries(startEntry, numEntries);
+    let entries = await getEntries(startEntry, startEntry + numEntries);
     const entryColl = collection(firestoreDb, "entries");
     const totalEntries = await getCountFromServer(entryColl);
 
