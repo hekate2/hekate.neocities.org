@@ -1,51 +1,51 @@
-:root {
-  --bg-primary: #000000;
-  --shadow: #262a61;
-  --text-primary: hwb(0 100% 0%);
-  --text-accent: #7D8EEC;
-  --text-hover: hotpink;
-  --text-link: hotpink;
-  --font-primary: Verdana;
-  --font-header: 'Gutter Vomit', 'Courier', monospace;
-}
-
-html {
-  image-rendering: pixelated;
-}
-
-body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-primary);
-  font-size: 11px; /* Yeah, I'm using pixels for size.  So sue me */
-}
-
-h1 {
-  font-family: var(--font-header);
-  font-size: 40px;
-}
-
-h2, h3 {
-  color: var(--text-accent);
-}
-
-a {
-  color: var(--text-link);
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.small {
-  font-size: smaller;
-}
-
-.wiggle span {
-  position: relative;
-  transition: .5s top;
-}
-
-.hidden {
-  display: none !important;
+:root {
+  --bg-primary: #000000;
+  --shadow: #262a61;
+  --text-primary: hwb(0 100% 0%);
+  --text-accent: #7D8EEC;
+  --text-hover: hotpink;
+  --text-link: hotpink;
+  --font-primary: Verdana;
+  --font-header: 'Gutter Vomit', 'Courier', monospace;
+}
+
+html {
+  image-rendering: pixelated;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: 11px; /* Yeah, I'm using pixels for size.  So sue me */
+}
+
+h1 {
+  font-family: var(--font-header);
+  font-size: 40px;
+}
+
+h2, h3 {
+  color: var(--text-accent);
+}
+
+a {
+  color: var(--text-link);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.small {
+  font-size: smaller;
+}
+
+.wiggle span {
+  position: relative;
+  transition: .5s top;
+}
+
+.hidden {
+  display: none !important;
 }

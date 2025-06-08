@@ -1,168 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- icon!! -->
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <!-- styles -->
-  <link rel="stylesheet" href="fonts/stylesheet.css">
-  <link rel="stylesheet" href="styles/common.css">
-  <link rel="stylesheet" href="styles/index.css">
-  <!-- functionality -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-geo"></script>
-  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.0.2"></script>
-  <script src="./scripts/common.js" type="module"></script>
-  <script src="./scripts/index.js" type="module"></script>
-  <title>Welcome to hekate.neocities.org!</title>
-</head>
-<body>
-  <!-- Mobile nav bar- hidden by default -->
-  <nav id="navbar">
-    <ul>
-      <li><a href="pages/quizzes/webguardian">Web Guardian Quiz</a></li>
-      <li><a target="_blank" href="https://hekate2.github.io/website-tools/archive/backgrounds.html">Background Archive</a></li>
-      <li><a target="_blank" href="https://hekate2.github.io/website-tools/generators/gendirect.html">Background Generator</a></li>
-      <li><a href="pages/about/">About Me</a></li>
-      <!-- <li><a href="">Music Page (Coming soon)</a></li> -->
-      <li><a href="pages/journal/">Journal</a></li>
-      <li><a href="pages/wgg/">Weird Gif Gallery</a></li>
-      <li><a href="pages/links/">Other Cool Websites!!</a></li>
-    </ul>
-    <button id="menu-btn">MENU</button>
-  </nav>
-  <div id="contents">
-    <!-- Main Content -->
-    <main>
-      <!-- Welcome header stuffz -->
-      <header>
-        <p id="last-updated" class="wiggle">Last Updated: <span>????</span></p>
-        <div id="welcome-img-holder">
-          <img src="images/loading-welcome.png" alt="cat" id="welcome-img" />
-          <h1 id="title" class="shake">hekate.neocities.org</h1>
-        </div>
-        <p id="welcome-msg">Welcome to my home on the web!</p>
-        <p>You are visitor #<span id="visitor-count">????</span></p>
-      </header>
-      <div id="star-divider"></div>
-      <!-- Updates splash section -->
-      <section id="new">
-        <h2>~*LaTeSt StUfF*~</h2>
-      </section>
-    </main>
-    <!-- Sidebar -->
-    <aside>
-      <!-- Current moods section -->
-      <section id="currently">
-        <h3 class="crazy">Currently...</h3>
-        <!-- LASTFM last listened music -->
-        <div id="listening">
-          <p class="bold">Listening to:</p>
-          <div>
-            <img src="images/spin-disc.gif" alt="spinning disc placeholder image" id="current-song-art" />
-            <div>
-              <div id="song-title-holder">Loading...</div>
-              <p id="current-song-artist">Loading...</p>
-              <p id="current-song-album">Loading...</p>
-            </div>
-            <button id="play" class="hidden">▶</button>
-          </div>
-        </div>
-        <!-- Feeling (imood) -->
-        <div id="feeling">
-          <p>
-            <span class="bold">I am feeling:</span>
-          </p>
-          <a href="https://www.imood.com/users/hekateneocities">
-            <img src="https://moods.imood.com/display/uname-hekateneocities/fg-FFFFFF/trans-1/imood.gif" alt="The current mood of hekateneocities at www.imood.com" border="0">
-          </a>
-        </div>
-        <div id="link-me">
-          <img src="images/button.png" alt="88x31 button" id="my-button">
-          <p>Link me! ⬏</p>
-        </div>
-      </section>
-      <section id="stuff">
-        <!-- YOUR STUFF LINKS CONTAINER -->
-        <div id="your-stuff" class="stuff-container">
-          <h3>~* YoUr StUfF *~</h3>
-          <ul>
-            <li><a href="pages/quizzes/webguardian">Web Guardian Quiz</a></li>
-            <li><a target="_blank" href="https://hekate2.github.io/buttonmaker/">88 x 31 Button Maker</a></li>
-            <li><a target="_blank" href="https://hekate2.github.io/website-tools/archive/backgrounds.html">Background Archive</a></li>
-            <li><a target="_blank" href="https://hekate2.github.io/website-tools/generators/gendirect.html">Background Generator</a></li>
-            <li><a target="_blank" href="https://hekate2.github.io/sign-generator/">Sign Maker</a></li>
-            <li><a target="_blank" href="https://dollz.neocities.org/">Dollz Maker</a></li>
-            <li><a target="_blank" href="https://layoutbuilder-chi.vercel.app/">Website Layout Builder</a></li>
-            <li><a href="pages/copypasteables/">Cool stuff 2 put on ur website</a></li>
-          </ul>
-        </div>
-        <div id="my-stuff" class="stuff-container">
-          <h3>~* mY sTuFf *~</h3>
-          <ul>
-            <li><a href="pages/about/">About Me</a></li>
-            <!-- <li><a href="">Music Page (Coming soon)</a></li> -->
-            <li><a href="pages/journal/">Journal</a></li>
-            <!-- <li><a href="">Articles</a></li> -->
-            <li><a href="pages/photos/">Photos</a></li>
-            <li><a href="https://users3.smartgb.com/g/g.php?a=s&i=g36-30759-55">Sign my guestbook!</a></li>
-            <li><a href="pages/contact/">Be my friend :-)</a></li>
-          </ul>
-        </div>
-        <div id="random" class="stuff-container">
-          <h3>~* RaNdOm *~</h3>
-          <ul>
-            <!-- <li><a href="">Old Web Search</a></li> -->
-            <li><a href="pages/wgg">Weird Gif Gallery</a></li>
-            <li><a href="pages/links">Other Cool Websites!!</a></li>
-            <!-- <li><a href="">Getting started w/ web programming (Coming soon)</a></li> -->
-          </ul>
-        </div>
-        <div id="mobile" class="stuff-container">
-          <h3>ThInGs tHaT dOnT lOoK gOoD oN mObIlE</h3>
-          <ul>
-            <li><a target="_blank" href="https://hekate2.github.io/buttonmaker/">88 x 31 Button Maker</a></li>
-            <li><a target="_blank" href="https://hekate2.github.io/sign-generator/">Sign Maker</a></li>
-            <li><a target="_blank" href="https://dollz.neocities.org/">Dollz Maker</a></li>
-            <li><a target="_blank" href="https://layoutbuilder-chi.vercel.app/">Website Layout Builder</a></li>
-            <li><a href="pages/copypasteables/">Cool stuff 2 put on ur website</a></li>
-            <li><a href="pages/photos/">Photos</a></li>
-            <li><a href="https://users3.smartgb.com/g/g.php?a=s&i=g36-30759-55">Sign my guestbook!</a></li>
-            <li><a href="pages/contact/">Be my friend :-)</a></li>
-          </ul>
-        </div>
-      </section>
-      <p><small>All stuff on my website is created by me &lt;3 plz don't steal my code, or at least talk to me before you do</small></p>
-    </aside>
-  </div>
-  <footer>&lt;3 Made with luv 2020-2025 &lt;3</footer>
-  <!-- Extra stuffz absolutely positioned -->
-  <div id="player"></div>
-  <div id="cursorghost"></div>
-  <div id="top-left-holder">
-    <!-- <div id="qotd">
-      <header>
-        <button id="qotd-close">X</button>
-        <h4 class="crazy">Question of the moment:</h4>
-      </header>
-      <div>
-        <p id="qotd-text">Which is better- cats or dogs?</p>
-        <div class="qotd-option">
-          <input type="radio" id="cat-opt" name="catordog" value="Cat">
-          <label for="cat-opt">Cat</label>
-        </div>
-        <div class="qotd-option">
-          <input type="radio" id="dog-opt" name="catordog" value="Dog">
-          <label for="dog-opt">Dog</label>
-        </div>
-      </div>
-    </div> -->
-    <div class="hidden" id="map-holder">
-      <canvas id="mapCanvas"></canvas>
-      <p class="small wiggle">They call me Ms Worlwide cuz I got fans far and wide... B-)</p>
-    </div>
-  </div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- icon!! -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- styles -->
+  <link rel="stylesheet" href="fonts/stylesheet.css">
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <!-- functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-geo"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.0.2"></script>
+  <script src="./scripts/common.js" type="module"></script>
+  <script src="./scripts/index.js" type="module"></script>
+  <title>Welcome to hekate.neocities.org!</title>
+</head>
+<body>
+  <!-- Mobile nav bar- hidden by default -->
+  <nav id="navbar">
+    <ul>
+      <li><a href="https://archivedive.net/" target="_blank">My Old Web Search Engine (ArchiveDive.net)</a></li> 
+      <li><a href="pages/quizzes/webguardian">Web Guardian Quiz</a></li>
+      <li><a target="_blank" href="https://hekate2.github.io/website-tools/archive/backgrounds.html">Background Archive</a></li>
+      <li><a target="_blank" href="https://hekate2.github.io/website-tools/generators/gendirect.html">Background Generator</a></li>
+      <li><a href="pages/about/">About Me</a></li>
+      <!-- <li><a href="">Music Page (Coming soon)</a></li> -->
+      <li><a href="pages/journal/">Journal</a></li>
+      <li><a href="pages/wgg/">Weird Gif Gallery</a></li>
+      <li><a href="pages/links/">Other Cool Websites!!!</a></li>
+    </ul>
+    <button id="menu-btn">MENU</button>
+  </nav>
+  <div id="contents">
+    <!-- Main Content -->
+    <main>
+      <!-- Welcome header stuffz -->
+      <header>
+        <p id="last-updated" class="wiggle">Last Updated: <span>????</span></p>
+        <div id="welcome-img-holder">
+          <img src="images/loading-welcome.png" alt="cat" id="welcome-img" />
+          <h1 id="title" class="shake">hekate.neocities.org</h1>
+        </div>
+        <p id="welcome-msg">Welcome to my home on the web!</p>
+        <p>You are visitor #<span id="visitor-count">????</span></p>
+      </header>
+      <div id="star-divider"></div>
+      <!-- Updates splash section -->
+      <section id="new">
+        <h2>~*LaTeSt StUfF*~</h2>
+      </section>
+    </main>
+    <!-- Sidebar -->
+    <aside>
+      <!-- Current moods section -->
+      <section id="currently">
+        <h3 class="crazy">Currently...</h3>
+        <!-- LASTFM last listened music -->
+        <div id="listening">
+          <p class="bold">Listening to:</p>
+          <div>
+            <img src="images/spin-disc.gif" alt="spinning disc placeholder image" id="current-song-art" />
+            <div>
+              <div id="song-title-holder">Loading...</div>
+              <p id="current-song-artist">Loading...</p>
+              <p id="current-song-album">Loading...</p>
+            </div>
+            <button id="play" class="hidden">▶</button>
+          </div>
+        </div>
+        <!-- Feeling (imood) -->
+        <div id="feeling">
+          <p>
+            <span class="bold">I am feeling:</span>
+          </p>
+          <a href="https://www.imood.com/users/hekateneocities">
+            <img src="https://moods.imood.com/display/uname-hekateneocities/fg-FFFFFF/trans-1/imood.gif" alt="The current mood of hekateneocities at www.imood.com" border="0">
+          </a>
+        </div>
+        <div id="link-me">
+          <img src="images/button.png" alt="88x31 button" id="my-button">
+          <p>Link me! ⬏</p>
+        </div>
+      </section>
+      <section id="stuff">
+        <!-- YOUR STUFF LINKS CONTAINER -->
+        <div id="your-stuff" class="stuff-container">
+          <h3>~* YoUr StUfF *~</h3>
+          <ul>
+            <li><a href="pages/quizzes/webguardian">Web Guardian Quiz</a></li>
+            <li><a target="_blank" href="https://hekate2.github.io/buttonmaker/">88 x 31 Button Maker</a></li>
+            <li><a target="_blank" href="https://hekate2.github.io/website-tools/archive/backgrounds.html">Background Archive</a></li>
+            <li><a target="_blank" href="https://hekate2.github.io/website-tools/generators/gendirect.html">Background Generator</a></li>
+            <li><a target="_blank" href="https://hekate2.github.io/sign-generator/">Sign Maker</a></li>
+            <li><a target="_blank" href="https://dollz.neocities.org/">Dollz Maker</a></li>
+            <li><a target="_blank" href="https://layoutbuilder-chi.vercel.app/">Website Layout Builder</a></li>
+            <li><a href="pages/copypasteables/">Cool stuff 2 put on ur website</a></li>
+          </ul>
+        </div>
+        <div id="my-stuff" class="stuff-container">
+          <h3>~* mY sTuFf *~</h3>
+          <ul>
+            <li><a href="pages/about/">About Me</a></li>
+            <!-- <li><a href="">Music Page (Coming soon)</a></li> -->
+            <li><a href="pages/journal/">Journal</a></li>
+            <!-- <li><a href="">Articles</a></li> -->
+            <li><a href="pages/photos/">Photos</a></li>
+            <li><a href="https://users3.smartgb.com/g/g.php?a=s&i=g36-30759-55">Sign my guestbook!</a></li>
+            <li><a href="pages/contact/">Be my friend :-)</a></li>
+          </ul>
+        </div>
+        <div id="random" class="stuff-container">
+          <h3>~* RaNdOm *~</h3>
+          <ul>
+            <li><a href="https://archivedive.net/" target="_blank">My Old Web Search Engine (ArchiveDive.net)</a></li> 
+            <li><a href="pages/wgg">Weird Gif Gallery</a></li>
+            <li><a href="pages/links">Other Cool Websites!!</a></li>
+            <!-- <li><a href="">Getting started w/ web programming (Coming soon)</a></li> -->
+          </ul>
+        </div>
+        <div id="mobile" class="stuff-container">
+          <h3>ThInGs tHaT dOnT lOoK gOoD oN mObIlE</h3>
+          <ul>
+            <li><a target="_blank" href="https://hekate2.github.io/buttonmaker/">88 x 31 Button Maker</a></li>
+            <li><a target="_blank" href="https://hekate2.github.io/sign-generator/">Sign Maker</a></li>
+            <li><a target="_blank" href="https://dollz.neocities.org/">Dollz Maker</a></li>
+            <li><a target="_blank" href="https://layoutbuilder-chi.vercel.app/">Website Layout Builder</a></li>
+            <li><a href="pages/copypasteables/">Cool stuff 2 put on ur website</a></li>
+            <li><a href="pages/photos/">Photos</a></li>
+            <li><a href="https://users3.smartgb.com/g/g.php?a=s&i=g36-30759-55">Sign my guestbook!</a></li>
+            <li><a href="pages/contact/">Be my friend :-)</a></li>
+          </ul>
+        </div>
+      </section>
+      <p><small>All stuff on my website is created by me &lt;3 plz don't steal my code, or at least talk to me before you do</small></p>
+    </aside>
+  </div>
+  <footer>&lt;3 Made with luv 2020-2025 &lt;3</footer>
+  <!-- Extra stuffz absolutely positioned -->
+  <div id="player"></div>
+  <div id="cursorghost"></div>
+  <div id="top-left-holder">
+    <!-- <div id="qotd">
+      <header>
+        <button id="qotd-close">X</button>
+        <h4 class="crazy">Question of the moment:</h4>
+      </header>
+      <div>
+        <p id="qotd-text">Which is better- cats or dogs?</p>
+        <div class="qotd-option">
+          <input type="radio" id="cat-opt" name="catordog" value="Cat">
+          <label for="cat-opt">Cat</label>
+        </div>
+        <div class="qotd-option">
+          <input type="radio" id="dog-opt" name="catordog" value="Dog">
+          <label for="dog-opt">Dog</label>
+        </div>
+      </div>
+    </div> -->
+    <div class="hidden" id="map-holder">
+      <canvas id="mapCanvas"></canvas>
+      <p class="small wiggle">They call me Ms Worlwide cuz I got fans far and wide... B-)</p>
+    </div>
+  </div>
+</body>
 </html>

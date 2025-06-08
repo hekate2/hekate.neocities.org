@@ -1,607 +1,607 @@
-body {
-  background-image: url("../images/compo-white-border.jpg");
-  background-repeat: repeat-y;
-  margin: 0;
-}
-
-body > iframe {
-  position: absolute;
-  bottom: 0;
-  left: 20px;
-}
-
-footer {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-}
-
-main {
-  flex: 1;
-  margin-right: 10px;
-}
-
-aside {
-  width: 200px;
-}
-
-aside ul {
-  padding: 0;
-}
-
-aside li {
-  list-style-type: none;
-}
-
-aside li::before {
-  content: "★";
-  margin-right: 5px;
-  font-size: 8px;
-}
-
-.spoken-word {
-  visibility: hidden;
-}
-
-#navbar {
-  display: none;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  justify-content: flex-end;
-  align-items: flex-end;
-  z-index: 1000;
-  flex-direction: column;
-}
-
-#contents {
-  width: 100vw;
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  padding: 2em 5em 0 5em;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-#current-song-album, #current-song-artist {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 143px;
-}
-
-#star-divider::before {
-  content: "★★★★★★★★★★★★★★";
-}
-
-#star-divider {
-  text-align: center;
-  letter-spacing: 10px;
-  color: var(--text-link);
-  margin-bottom: 10px;
-}
-
-#song-title-holder {
-  height: 1.1em;
-  display: flex ;
-  overflow: hidden ;
-  white-space: nowrap ;
-}
-
-#song-title-holder p {
-  position: relative;
-  color: var(--text-link);
-}
-
-#song-title-holder p.scroll {
-  animation-duration: 8s ;
-  animation-iteration-count: infinite ;
-  animation-name: marquee ;
-  animation-timing-function: linear ;
-  padding: 0 15px;
-  margin: 0;
-}
-
-#song-title-holder:hover p.scroll {
-  animation-play-state: paused;
-}
-
-#listening img {
-  border: 1px solid var(--text-link);
-  height: 50px;
-  width: 50px;
-}
-
-#listening > div p {
-  margin: 1px 0;
-}
-
-#listening > div {
-  display: flex;
-  overflow: hidden;
-}
-
-#listening > div > div {
-  padding: 5px;
-  overflow: hidden;
-}
-
-#player {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-}
-
-.video-preview {
-  border: 1px solid var(--text-accent);
-  margin-right: 10px;
-}
-
-.news-holder {
-  display: flex;
-  margin: 10px 0;
-}
-
-#play {
-  align-self: flex-end;
-  background-color: var(--text-accent);
-  width: 10px;
-  height: 17px;
-  border: 2px outset var(--text-accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: smaller;
-  cursor: pointer;
-}
-
-#play:hover {
-  background-color: var(--text-link);
-  border: 2px outset var(--text-link);
-}
-
-#play:active {
-  filter: invert(1);
-}
-
-#feeling {
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-}
-
-#feeling p {
-  margin: 0;
-}
-
-aside h3 {
-  margin: 0;
-  padding: 0px 5px;
-  background-color: var(--text-accent);
-  color: var(--bg-primary);
-}
-
-#currently, .stuff-container {
-  border: 1px solid var(--text-accent);
-}
-
-.stuff-container {
-  margin: 10px 0;
-}
-
-.stuff-container ul {
-  padding: 0 10px;
-  cursor: pointer;
-}
-
-.stuff-container li:hover {
-  color: var(--text-hover);
-}
-
-#listening, #link-me, #feeling {
-  margin: 0 10px;
-}
-
-#link-me {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#link-me p {
-  font-style: italic;
-}
-
-#listening > div > div {
-  flex: 1;
-}
-
-.hidden {
-  display: none !important;
-}
-
-#welcome-img {
-  height: 200px;
-  border: 1px solid var(--text-accent);
-  margin-bottom: 1em;
-}
-
-#welcome-msg {
-  margin: 0;
-  margin-top: 1.5em;
-  font-weight: bold;
-}
-
-header > p:last-of-type {
-  margin: 0;
-}
-
-#title {
-  -webkit-text-stroke: 5px var(--bg-primary);
-  paint-order: stroke fill;
-  position: absolute;
-  margin-top: -26px;
-  transform: translateX(-33px);
-  font-weight: normal;
-  display: flex;
-  align-items: center;
-}
-
-#title::before,
-#title::after {
-  content: "";
-  width: 30px;
-  height: 30px;
-  background-image: url("../images/purplestar.gif");
-  background-size: contain;
-  position: absolute;
-}
-
-#title::before {
-  left: -43px;
-}
-
-#title::after {
-  right: -33px;
-}
-
-main > header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 28px;
-  position: relative;
-}
-
-#currently, .stuff-container {
-  background-color: var(--bg-primary);
-  box-shadow: 5px 5px var(--shadow);
-  margin-bottom: 15px;
-}
-
-#qotd {
-  display: block;
-  border: 1px solid var(--text-accent);
-  background-color: var(--bg-primary);
-  width: 200px;
-}
-
-#qotd header {
-  background-color: var(--text-accent);
-  color: var(--bg-primary);
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
-}
-
-#qotd header button {
-  margin-left: 5px;
-  background-color: var(--text-link);
-  border: 2px outset var(--text-link);
-  box-shadow: 0 0 0 1px var(--bg-primary);
-  cursor: point;
-  font-weight: bold;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: smaller;
-  margin: 5px;
-}
-
-#qotd h4 {
-  margin: 0;
-  margin-right: 5px;
-}
-
-#qotd header button:active {
-  border: 2px inset var(--text-link);
-}
-
-.qotd-option {
-  display: flex;
-  align-items: center;
-}
-
-#qotd.close {
-  animation: 1s close forwards;
-  transform-origin: top;
-}
-
-#cursorghost {
-  position: absolute;
-  z-index: 1000;
-  transform: translate(10px, 10px);
-}
-
-.image-caption {
-  background-color: var(--text-primary);
-  border: 1px solid;
-  color: var(--bg-primary);
-  padding: 1px 5px;
-  max-width: 200px;
-}
-
-.stuff-container a {
-  color: var(--text-primary);
-  text-decoration: none;
-}
-
-.stuff-container a:hover {
-  color: var(--text-link)
-}
-
-.warning-cont {
-  display: flex;
-  align-items: flex-start;
-  width: 300px;
-  animation: 7s fizzle forwards;
-  position: absolute;
-}
-
-.warning-cont p {
-  margin: 0;
-  margin-left: 5px;
-}
-
-.warning-cont img {
-  height: 1em;
-}
-
-.shakeyletter {
-  display: inline-block;
-}
-
-.news-img {
-  max-height: 125px;
-  max-width: 300px;
-  margin: 0 10px 10px 0;
-}
-
-.news-holder a {
-  font-weight: 1.5em;
-  color: var(--text-accent);
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: bold;
-  display: block;
-  margin-bottom: .5em;
-}
-
-.news-holder a:hover {
-  text-decoration: underline;
-  color: var(--text-primary);
-}
-
-#new {
-  margin: 0 30px;
-  max-height: 40vh;
-  overflow-y: scroll;
-}
-
-#new::-webkit-scrollbar {
-    display: none;
-}
-
-#new h2 {
-  text-align: center;
-  font-size: smaller;
-  margin: 20px 0;
-}
-
-#new h4 {
-  font-size: 1.5em;
-  margin-top: 0;
-  margin-bottom: 1em;
-}
-
-.explode > p {
-  position: absolute;
-  cursor: inherit;
-}
-
-.explode {
-  transform: translate(-10px,-20px);
-  position: absolute;
-  pointer-events: none;
-}
-
-.news-tag {
-  color: var(--text-accent);
-  margin: 0;
-}
-
-#mapCanvas {
-  background-color: black;
-  max-width: 220px;
-  max-height: 120px;
-  padding: 10px;
-}
-
-#map-holder {
-  margin-top: 10px;
-}
-
-#top-left-holder {
-  position: fixed;
-  max-width: 220px;
-  top: 0;
-  left: 0;
-  margin: 10px;
-  background-color: var(--bg-primary);
-  align-items: start;
-  display: flex;
-  flex-direction: column;
-}
-
-#menu-btn {
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
-  font-weight: bold;
-  outline: none;
-  border: 0;
-  background-color: hotpink;
-  box-shadow: 0 0 40px black;
-  transform: rotate(20deg);
-  margin: 10px;
-  cursor: pointer;
-}
-
-#navbar > ul {
-  width: 100%;
-  margin: 0;
-  background-color: var(--text-accent);
-  color: var(--bg-primary);
-  line-height: 1.75em;
-  list-style-position: inside;
-  border-bottom: 1px solid;
-  cursor: pointer;
-  font-size: 1em;
-}
-
-#navbar > ul > li {
-  padding: 2px 10px;
-}
-
-#navbar > ul > li:hover {
-  background-color: rgba(255, 255, 255, 0.32) !important;
-  font-weight: bold;
-}
-
-#navbar > ul > li:nth-of-type(2n - 1) {
-  background-color: rgba(0, 0, 197, 0.133);
-}
-
-#navbar > ul.shown {
-  /* We'll worry about transitions later */
-  display: block;
-}
-
-#navbar > ul {
-  display: none;
-  transition: 1s transform;
-}
-
-#navbar a {
-  color: var(--bg-primary);
-  text-decoration: none;
-}
-
-#mobile {
-  display: none;
-}
-
-@keyframes fizzle {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-}
-
-@keyframes close {
-  0% {
-    transform: scaleY(1);
-  }
-  100% {
-    transform: scaleY(0);
-  }
-}
-
-@keyframes marquee {
-  /* Element one fully ON screen at left-edge of container. */
-	from {
-    transform: translateX( 0% );
-  }
-  to {
-    transform: translateX( -100% );
-  }
-}
-
-/** Mobile styles... I mean, like, who even uses those anyways??? **/
-@media (max-width: 768px) { 
-  body {
-    background-image: none;
-  }
-
-  #contents {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    width: calc(100vw - 40px);
-  }
-
-  aside {
-    width: 100%;
-  }
-
-  #currently, .stuff-container {
-    box-shadow: none;
-    border: none;
-  }
-
-  #new {
-    margin: 0;
-  }
-
-  #title {
-    transform: translateX(6px);
-    font-size: 30px;
-  }
-
-  #play {
-    align-self: stretch;
-    height: 40px;
-    width: 40px;
-    font-size: 2em;
-  }
-
-  #navbar {
-    display: flex;
-  }
-
-  #mobile {
-    display: block;
-  }
-
-  #random, #my-stuff, #your-stuff {
-    display: none;
-  }
+body {
+  background-image: url("../images/compo-white-border.jpg");
+  background-repeat: repeat-y;
+  margin: 0;
+}
+
+body > iframe {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+}
+
+footer {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+main {
+  flex: 1;
+  margin-right: 10px;
+}
+
+aside {
+  width: 200px;
+}
+
+aside ul {
+  padding: 0;
+}
+
+aside li {
+  list-style-type: none;
+}
+
+aside li::before {
+  content: "★";
+  margin-right: 5px;
+  font-size: 8px;
+}
+
+.spoken-word {
+  visibility: hidden;
+}
+
+#navbar {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  justify-content: flex-end;
+  align-items: flex-end;
+  z-index: 1000;
+  flex-direction: column;
+}
+
+#contents {
+  width: 100vw;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  padding: 2em 5em 0 5em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#current-song-album, #current-song-artist {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 143px;
+}
+
+#star-divider::before {
+  content: "★★★★★★★★★★★★★★";
+}
+
+#star-divider {
+  text-align: center;
+  letter-spacing: 10px;
+  color: var(--text-link);
+  margin-bottom: 10px;
+}
+
+#song-title-holder {
+  height: 1.1em;
+  display: flex ;
+  overflow: hidden ;
+  white-space: nowrap ;
+}
+
+#song-title-holder p {
+  position: relative;
+  color: var(--text-link);
+}
+
+#song-title-holder p.scroll {
+  animation-duration: 8s ;
+  animation-iteration-count: infinite ;
+  animation-name: marquee ;
+  animation-timing-function: linear ;
+  padding: 0 15px;
+  margin: 0;
+}
+
+#song-title-holder:hover p.scroll {
+  animation-play-state: paused;
+}
+
+#listening img {
+  border: 1px solid var(--text-link);
+  height: 50px;
+  width: 50px;
+}
+
+#listening > div p {
+  margin: 1px 0;
+}
+
+#listening > div {
+  display: flex;
+  overflow: hidden;
+}
+
+#listening > div > div {
+  padding: 5px;
+  overflow: hidden;
+}
+
+#player {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+.video-preview {
+  border: 1px solid var(--text-accent);
+  margin-right: 10px;
+}
+
+.news-holder {
+  display: flex;
+  margin: 10px 0;
+}
+
+#play {
+  align-self: flex-end;
+  background-color: var(--text-accent);
+  width: 10px;
+  height: 17px;
+  border: 2px outset var(--text-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: smaller;
+  cursor: pointer;
+}
+
+#play:hover {
+  background-color: var(--text-link);
+  border: 2px outset var(--text-link);
+}
+
+#play:active {
+  filter: invert(1);
+}
+
+#feeling {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+#feeling p {
+  margin: 0;
+}
+
+aside h3 {
+  margin: 0;
+  padding: 0px 5px;
+  background-color: var(--text-accent);
+  color: var(--bg-primary);
+}
+
+#currently, .stuff-container {
+  border: 1px solid var(--text-accent);
+}
+
+.stuff-container {
+  margin: 10px 0;
+}
+
+.stuff-container ul {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.stuff-container li:hover {
+  color: var(--text-hover);
+}
+
+#listening, #link-me, #feeling {
+  margin: 0 10px;
+}
+
+#link-me {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#link-me p {
+  font-style: italic;
+}
+
+#listening > div > div {
+  flex: 1;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#welcome-img {
+  height: 200px;
+  border: 1px solid var(--text-accent);
+  margin-bottom: 1em;
+}
+
+#welcome-msg {
+  margin: 0;
+  margin-top: 1.5em;
+  font-weight: bold;
+}
+
+header > p:last-of-type {
+  margin: 0;
+}
+
+#title {
+  -webkit-text-stroke: 5px var(--bg-primary);
+  paint-order: stroke fill;
+  position: absolute;
+  margin-top: -26px;
+  transform: translateX(-33px);
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+}
+
+#title::before,
+#title::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-image: url("../images/purplestar.gif");
+  background-size: contain;
+  position: absolute;
+}
+
+#title::before {
+  left: -43px;
+}
+
+#title::after {
+  right: -33px;
+}
+
+main > header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+#currently, .stuff-container {
+  background-color: var(--bg-primary);
+  box-shadow: 5px 5px var(--shadow);
+  margin-bottom: 15px;
+}
+
+#qotd {
+  display: block;
+  border: 1px solid var(--text-accent);
+  background-color: var(--bg-primary);
+  width: 200px;
+}
+
+#qotd header {
+  background-color: var(--text-accent);
+  color: var(--bg-primary);
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+#qotd header button {
+  margin-left: 5px;
+  background-color: var(--text-link);
+  border: 2px outset var(--text-link);
+  box-shadow: 0 0 0 1px var(--bg-primary);
+  cursor: point;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: smaller;
+  margin: 5px;
+}
+
+#qotd h4 {
+  margin: 0;
+  margin-right: 5px;
+}
+
+#qotd header button:active {
+  border: 2px inset var(--text-link);
+}
+
+.qotd-option {
+  display: flex;
+  align-items: center;
+}
+
+#qotd.close {
+  animation: 1s close forwards;
+  transform-origin: top;
+}
+
+#cursorghost {
+  position: absolute;
+  z-index: 1000;
+  transform: translate(10px, 10px);
+}
+
+.image-caption {
+  background-color: var(--text-primary);
+  border: 1px solid;
+  color: var(--bg-primary);
+  padding: 1px 5px;
+  max-width: 200px;
+}
+
+.stuff-container a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.stuff-container a:hover {
+  color: var(--text-link)
+}
+
+.warning-cont {
+  display: flex;
+  align-items: flex-start;
+  width: 300px;
+  animation: 7s fizzle forwards;
+  position: absolute;
+}
+
+.warning-cont p {
+  margin: 0;
+  margin-left: 5px;
+}
+
+.warning-cont img {
+  height: 1em;
+}
+
+.shakeyletter {
+  display: inline-block;
+}
+
+.news-img {
+  max-height: 125px;
+  max-width: 300px;
+  margin: 0 10px 10px 0;
+}
+
+.news-holder a {
+  font-weight: 1.5em;
+  color: var(--text-accent);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  margin-bottom: .5em;
+}
+
+.news-holder a:hover {
+  text-decoration: underline;
+  color: var(--text-primary);
+}
+
+#new {
+  margin: 0 30px;
+  max-height: 40vh;
+  overflow-y: scroll;
+}
+
+#new::-webkit-scrollbar {
+    display: none;
+}
+
+#new h2 {
+  text-align: center;
+  font-size: smaller;
+  margin: 20px 0;
+}
+
+#new h4 {
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.explode > p {
+  position: absolute;
+  cursor: inherit;
+}
+
+.explode {
+  transform: translate(-10px,-20px);
+  position: absolute;
+  pointer-events: none;
+}
+
+.news-tag {
+  color: var(--text-accent);
+  margin: 0;
+}
+
+#mapCanvas {
+  background-color: black;
+  max-width: 220px;
+  max-height: 120px;
+  padding: 10px;
+}
+
+#map-holder {
+  margin-top: 10px;
+}
+
+#top-left-holder {
+  position: fixed;
+  max-width: 220px;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  background-color: var(--bg-primary);
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+}
+
+#menu-btn {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  font-weight: bold;
+  outline: none;
+  border: 0;
+  background-color: hotpink;
+  box-shadow: 0 0 40px black;
+  transform: rotate(20deg);
+  margin: 10px;
+  cursor: pointer;
+}
+
+#navbar > ul {
+  width: 100%;
+  margin: 0;
+  background-color: var(--text-accent);
+  color: var(--bg-primary);
+  line-height: 1.75em;
+  list-style-position: inside;
+  border-bottom: 1px solid;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+#navbar > ul > li {
+  padding: 2px 10px;
+}
+
+#navbar > ul > li:hover {
+  background-color: rgba(255, 255, 255, 0.32) !important;
+  font-weight: bold;
+}
+
+#navbar > ul > li:nth-of-type(2n - 1) {
+  background-color: rgba(0, 0, 197, 0.133);
+}
+
+#navbar > ul.shown {
+  /* We'll worry about transitions later */
+  display: block;
+}
+
+#navbar > ul {
+  display: none;
+  transition: 1s transform;
+}
+
+#navbar a {
+  color: var(--bg-primary);
+  text-decoration: none;
+}
+
+#mobile {
+  display: none;
+}
+
+@keyframes fizzle {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes close {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes marquee {
+  /* Element one fully ON screen at left-edge of container. */
+	from {
+    transform: translateX( 0% );
+  }
+  to {
+    transform: translateX( -100% );
+  }
+}
+
+/** Mobile styles... I mean, like, who even uses those anyways??? **/
+@media (max-width: 768px) { 
+  body {
+    background-image: none;
+  }
+
+  #contents {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: calc(100vw - 40px);
+  }
+
+  aside {
+    width: 100%;
+  }
+
+  #currently, .stuff-container {
+    box-shadow: none;
+    border: none;
+  }
+
+  #new {
+    margin: 0;
+  }
+
+  #title {
+    transform: translateX(6px);
+    font-size: 30px;
+  }
+
+  #play {
+    align-self: stretch;
+    height: 40px;
+    width: 40px;
+    font-size: 2em;
+  }
+
+  #navbar {
+    display: flex;
+  }
+
+  #mobile {
+    display: block;
+  }
+
+  #random, #my-stuff, #your-stuff {
+    display: none;
+  }
 }

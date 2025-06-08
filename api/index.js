@@ -28,7 +28,7 @@ const app = express();
 app.use(cors()); // cors
 
 const corsOptions = {
-  origin: ['*'], // Add your frontend URLs here
+  origin: ['*'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
   credentials: true,
@@ -140,39 +140,6 @@ app.get("/entries", async (req, res) => {
   }
 });
 
-  // let db;
-  // try {
-  //   db = await getDBConnection();
-
-  //   if (!req.query.topentry) {
-  //     let entries = await db.all("SELECT * FROM entries ORDER BY time");
-
-  //     res.json({
-  //       "totalEntries": entries.length,
-  //       "entry": entries
-  //     });
-  //   } else {
-  //     let topentry = req.query.topentry;
-  //     let query = "SELECT * FROM entries ORDER BY time DESC LIMIT ? OFFSET ?";
-
-  //     let entries = await db.all(query, parseInt(req.query.offset) || 100, (parseInt(topentry) || 1) - 1);
-  //     let entryCount = await db.get("SELECT COUNT(*) as count FROM entries");
-  
-  //     res.json({
-  //       "totalEntries": entryCount.count, // TODO: get total number of entries
-  //       "entry": entries
-  //     });
-  //   }
-  // } catch (err) {
-  //   console.error(err);
-  //   res.status(500).json({
-  //     "status": "error",
-  //     "message": err.message
-  //   })
-  // } finally {
-  //   await db?.close();
-  // }
-
 app.post("/wgg/submit", upload.single('gif'), async (req, res) => {
   if (!req.body) {
     res.type('text').status(400).send("Please include a body with your request!");
@@ -215,34 +182,9 @@ app.post('/stats', async (req, res) => {
     await statusCheck(visitCount);
     visitCount = await visitCount.json();
     
-    // const jsonfileloc = process.env.DEV === "true" ? "data/locations.json" : path.join(process.cwd(), "api/data/locations.json");
-    // let locations = await fs.readFile(jsonfileloc, "utf-8");
-    // locations = JSON.parse(locations);
-
-    // let ip = req.headers['x-forwarded-for'];
-    // let response;
-
-    // if (ip) {
-    //   response = await fetch(`http://ip-api.com/json/${ip}`);
-    //   await statusCheck(response);
-    // }
-    
-    // if (response?.lon && response?.lat && response?.status !== "fail") {
-    //   //  if could get user's ip- get their location
-    //   response = await response.json();
-    //   locations.push({ latitude: response.lat, longitude: response.lon, timestamp: new Date().toISOString() });
-    
-    //   if (locations.length > 100) {
-    //     locations.shift(); // Remove the oldest entry
-    //   }
-    
-    //   await fs.writeFile(jsonfileloc, JSON.stringify(locations));
-    // }
-    
     res.json({
       visitcount: visitCount["info"]["views"],
       lastupdate: visitCount["info"]["last_updated"]
-      // visits: locations.slice(0, 100)
     }); // maybe instead of sending coords we could somehow make the map on the server 
   } catch (error) {
     console.error('Error fetching location:', error);
@@ -289,23 +231,7 @@ more suff: ${extra}`
   }
 });
 
-// /** retrieves entries from firestore database given a starting and end index */
-// async function getEntries(start = 0, end = 0) {
-//   if (start >= end) {
-//     end = start + 1;
-//   }
-
-//   const entriesRef = collection(firestoreDb, "entries");
-
-//   const q = query(entriesRef, orderBy("order", "desc"), startAt(start), limit(end - start));
-
-//   const snapshot = await getDocs(q);
-
-//   console.log(snapshot.docs);
-
-//   return [...snapshot.docs.map((doc) => doc.data())].reverse();
-// }
-
+// gets entries between start and end index from firestore db
 async function getEntries(start = 0, end = 0) {
   if (start >= end) {
     end = start + 1;
@@ -336,6 +262,7 @@ async function statusCheck(res) {
   return res;
 }
 
+// NOT IN USE.  Retrieves data from a sqlite database
 async function getDBConnection() {
   const dbpath = "data/data.db";
   const db = await open({

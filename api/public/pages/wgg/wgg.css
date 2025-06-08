@@ -1,134 +1,134 @@
-.img-holder img {
-  margin: 10px;
-  height: calc(33vh - 40px);
-  border: 10px solid transparent;
-  border-image: url(../../images/weirdgifgallery/wood-frame.png) 30 round;
-  cursor: pointer;
-  max-width: 230px;
-  max-height: 175px;
-}
-
-.img-holder img:hover {
-  transform: rotate(0deg) !important;
-}
-
-main {
-  display: flex;
-  justify-content: start;
-  flex-wrap: wrap;
-  align-items: start;
-}
-
-h1 {
-  font-family: 'Verdana', 'Arial', sans-serif;
-  color: var(--text-accent);
-  font-size: 1.5em;
-  margin-top: 0;
-}
-
-main > div {
-  height: calc(33vh - 60px);
-  border: 1px solid var(--text-primary);
-  padding: 10px;
-  margin: 10px;
-  width: 300px;
-}
-
-main > div.img-holder {
-  width: auto;
-}
-
-
-.img-holder {
-  position: relative;
-}
-
-.img-holder p {
-    display: inline;
-    margin: 0;
-    background-color: var(--bg-primary);
-    border: 1px solid;
-    position: absolute;
-    bottom: -20px;
-    right: 0;
-}
-
-.success {
-  width: 100%;
-  text-align: center;
-}
-
-.img-holder {
-  border: none; 
-}
-
-#inputs button {
-  cursor: pointer;
-}
-
-#inputs button:hover {
-  border-color: var(--text-primary);
-  color: var(--text-primary);
-}
-
-#texts > * {
-  margin: 2px;
-}
-
-#texts {
-  text-align: center;
-}
-
-#text h2 {
-  font-weight: 600;
-}
-
-#inputs label {
-  position: absolute;
-  background-color: var(--bg-primary);
-  margin-top: -21px;
-  padding: 3px 3px;
-}
-
-#inputs {
-  padding: 10px 5px 5px 5px;
-  border: 1px solid var(--text-accent);
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-}
-
-#inputs button {
-  align-self: center;
-}
-
-#inputs input[type='text'] {
-  background-color: var(--bg-primary);
-  color: var(--text-accent);
-  border: 1px solid;
-  margin-bottom: 5px;
-  width: 98%;
-}
-
-#sendem {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-#home {
-  background-color: var(--bg-primary);
-  bottom: 5px;
-  left: 5px;
-  padding: 5px;
-  position: fixed;
-  border: 1px solid;
-  z-index: 20;
-}
-
-button {
-  margin-top: 10px;
-  background-color: var(--bg-primary);
-  border: 1px solid var(--text-link);
-  color: var(--text-link);
+.img-holder img {
+  margin: 10px;
+  height: calc(33vh - 40px);
+  border: 10px solid transparent;
+  border-image: url(../../images/weirdgifgallery/wood-frame.png) 30 round;
+  cursor: pointer;
+  max-width: 230px;
+  max-height: 175px;
+}
+
+.img-holder img:hover {
+  transform: rotate(0deg) !important;
+}
+
+main {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  align-items: start;
+}
+
+h1 {
+  font-family: 'Verdana', 'Arial', sans-serif;
+  color: var(--text-accent);
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+main > div {
+  height: calc(33vh - 60px);
+  border: 1px solid var(--text-primary);
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+}
+
+main > div.img-holder {
+  width: auto;
+}
+
+
+.img-holder {
+  position: relative;
+}
+
+.img-holder p {
+    display: inline;
+    margin: 0;
+    background-color: var(--bg-primary);
+    border: 1px solid;
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+}
+
+.success {
+  width: 100%;
+  text-align: center;
+}
+
+.img-holder {
+  border: none; 
+}
+
+#inputs button {
+  cursor: pointer;
+}
+
+#inputs button:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+#texts > * {
+  margin: 2px;
+}
+
+#texts {
+  text-align: center;
+}
+
+#text h2 {
+  font-weight: 600;
+}
+
+#inputs label {
+  position: absolute;
+  background-color: var(--bg-primary);
+  margin-top: -21px;
+  padding: 3px 3px;
+}
+
+#inputs {
+  padding: 10px 5px 5px 5px;
+  border: 1px solid var(--text-accent);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+#inputs button {
+  align-self: center;
+}
+
+#inputs input[type='text'] {
+  background-color: var(--bg-primary);
+  color: var(--text-accent);
+  border: 1px solid;
+  margin-bottom: 5px;
+  width: 98%;
+}
+
+#sendem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#home {
+  background-color: var(--bg-primary);
+  bottom: 5px;
+  left: 5px;
+  padding: 5px;
+  position: fixed;
+  border: 1px solid;
+  z-index: 20;
+}
+
+button {
+  margin-top: 10px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--text-link);
+  color: var(--text-link);
 }

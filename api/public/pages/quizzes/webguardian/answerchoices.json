@@ -1,70 +1,70 @@
-{
-  "A": [
-    {
-      "title": "JAGUAR",
-      "img": "https://i.ibb.co/CwQhsDY/jaguar.jpg",
-      "description": "Jaguars are both diurnal and nocturnal."
-    },
-    {
-      "title": "DOG",
-      "img": "https://i.ibb.co/Snfhzng/dog.jpg",
-      "description": "A dog's nose print is unique, much like a person's fingerprint."
-    },
-    {
-      "title": "PARROT",
-      "img": "https://i.ibb.co/g442S02/parrot.jpg",
-      "description": "Parrots taste with the roofs of their mouths."
-    }
-  ],
-  "B": [
-    {
-      "title": "OWL",
-      "img": "https://i.ibb.co/MSGxtwm/owl.jpg",
-      "description": "A group of owls is called a parliament."
-    },
-    {
-      "title": "HEDGEHOG",
-      "img": "https://i.ibb.co/7yb0DDj/hedgehog.jpg",
-      "description": "Hedgehogs are lactose intolerant."
-    },
-    {
-      "title": "CAT",
-      "img": "https://i.ibb.co/Bc2KW7v/cat.jpg",
-      "description": "Cats are believed to be the only mammals who don't taste sweetness."
-    }
-  ],
-  "C": [
-    {
-      "title": "FROG",
-      "img": "https://i.ibb.co/wBgz80w/frog.jpg",
-      "description": "The pictured frog, a Red-Banded Rubber Frog, releases a milky toxic substance through its skin, and is toxic to both humans and other frogs."
-    },
-    {
-      "title": "DOLPHIN",
-      "img": "https://i.ibb.co/zr1qMd7/dolphin.png",
-      "description": "There are currently 42 species of dolphins"
-    },
-    {
-      "title": "RABBIT",
-      "img": "https://i.ibb.co/py2t8KT/rabbit.jpg",
-      "description": "Like deer, a female rabbit is called a 'doe' and a male rabbit is called a 'buck'"
-    }
-  ],
-  "D": [
-    {
-      "title": "BUTTERFLY",
-      "img": "https://i.ibb.co/wwhYvRp/butterfly.jpg",
-      "description": "The Large Blue butterfly is a species of carnivorous butterfly, and went extinct in Britain in 1979.  It has since been reintroduced with new conservation methods."
-    },
-    {
-      "title": "TAPIR",
-      "img": "https://i.ibb.co/10FV850/tapir.jpg",
-      "description": "Tapirs have changed very little over the past 20 million years."
-    },
-    {
-      "title": "ZEBRA",
-      "img": "https://i.ibb.co/pQ5VvhG/zebra.jpg",
-      "description": "The zebra's stripes are known to protect it from blood-sucking insects"
-    }
-  ]
+{
+  "A": [
+    {
+      "title": "JAGUAR",
+      "img": "https://i.ibb.co/CwQhsDY/jaguar.jpg",
+      "description": "Jaguars are both diurnal and nocturnal."
+    },
+    {
+      "title": "DOG",
+      "img": "https://i.ibb.co/Snfhzng/dog.jpg",
+      "description": "A dog's nose print is unique, much like a person's fingerprint."
+    },
+    {
+      "title": "PARROT",
+      "img": "https://i.ibb.co/g442S02/parrot.jpg",
+      "description": "Parrots taste with the roofs of their mouths."
+    }
+  ],
+  "B": [
+    {
+      "title": "OWL",
+      "img": "https://i.ibb.co/MSGxtwm/owl.jpg",
+      "description": "A group of owls is called a parliament."
+    },
+    {
+      "title": "HEDGEHOG",
+      "img": "https://i.ibb.co/7yb0DDj/hedgehog.jpg",
+      "description": "Hedgehogs are lactose intolerant."
+    },
+    {
+      "title": "CAT",
+      "img": "https://i.ibb.co/Bc2KW7v/cat.jpg",
+      "description": "Cats are believed to be the only mammals who don't taste sweetness."
+    }
+  ],
+  "C": [
+    {
+      "title": "FROG",
+      "img": "https://i.ibb.co/wBgz80w/frog.jpg",
+      "description": "The pictured frog, a Red-Banded Rubber Frog, releases a milky toxic substance through its skin, and is toxic to both humans and other frogs."
+    },
+    {
+      "title": "DOLPHIN",
+      "img": "https://i.ibb.co/zr1qMd7/dolphin.png",
+      "description": "There are currently 42 species of dolphins"
+    },
+    {
+      "title": "RABBIT",
+      "img": "https://i.ibb.co/py2t8KT/rabbit.jpg",
+      "description": "Like deer, a female rabbit is called a 'doe' and a male rabbit is called a 'buck'"
+    }
+  ],
+  "D": [
+    {
+      "title": "BUTTERFLY",
+      "img": "https://i.ibb.co/wwhYvRp/butterfly.jpg",
+      "description": "The Large Blue butterfly is a species of carnivorous butterfly, and went extinct in Britain in 1979.  It has since been reintroduced with new conservation methods."
+    },
+    {
+      "title": "TAPIR",
+      "img": "https://i.ibb.co/10FV850/tapir.jpg",
+      "description": "Tapirs have changed very little over the past 20 million years."
+    },
+    {
+      "title": "ZEBRA",
+      "img": "https://i.ibb.co/pQ5VvhG/zebra.jpg",
+      "description": "The zebra's stripes are known to protect it from blood-sucking insects"
+    }
+  ]
 }
