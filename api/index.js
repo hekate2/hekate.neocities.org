@@ -69,7 +69,7 @@ app.get("/test", (req, res) => res.type('text').send("Is this thing even on???")
 
 app.get("/last-song", async (req, res) => {
   try {
-    let fmdata = await fetch(LASTFM_BASE + "?method=user.getrecenttracks&user=oubliette99&api_key=ae3443515a2781395979d88e35f0afd6&format=json");
+    let fmdata = await fetch(LASTFM_BASE + "?method=user.getrecenttracks&user=oubliette99&api_key=" + process.env.LASTFM_KEY + "&format=json");
     await statusCheck(fmdata);
     fmdata = await fmdata.json(); // TODO: this is a problem because res.json() also sends
 
